@@ -39,7 +39,7 @@
     <label for="phone_number">Phone number</label>
   </div>
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="second_phone_number" name="second_phone_number" placeholder="Second phone number" value="null">
+    <input type="text" class="form-control" id="second_phone_number" name="second_phone_number" placeholder="Second phone number">
     <label for="second_phone_number">Second phone number</label>
   </div>
   <div class="form-floating mb-3">
