@@ -18,6 +18,19 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    public function hasRole(){
+        if($this->role === 1){
+          return view('welcome');
+        }else if($this->role === 2){
+          return view('welcome');
+        }else if($this->role === 3){
+            return view('welcome');
+         }else{
+          return redirect()->back();
+        }
+      }
+
     protected $fillable = [
         'first_name',
         'middle_name',

@@ -20,3 +20,17 @@ Route::get('/', function () {
 Route::middleware(['auth'])->get('/dashboard' ,function(){
     return view('dashboard');
 })->name('dashboard');
+
+/* Route::group(['middleware' => 'auth'], function(){
+
+    Route::group(['middleware' => 'role:admin,manager,member'], function(){
+
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->middleware('role:admin');
+
+        // Route::view('/dashboard', 'dashboard')->middleware('role:member');
+    });
+
+  });
+ */
