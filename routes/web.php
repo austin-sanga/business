@@ -17,9 +17,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/* routes administered operates in general form,
+    origin story during all user access mode/member mode */
+
 Route::middleware(['auth'])->get('/dashboard' ,function(){
     return view('dashboard');
-})->name('dashboard');
+});
+
+Route::middleware(['auth'])->get('/ministatement' ,function(){
+    return view('ministatement');
+});
+
+Route::middleware(['auth'])->get('/investments' ,function(){
+    return view('investments');
+});
+
+Route::middleware(['auth'])->get('/loans' ,function(){
+    return view('loans');
+});
+
+Route::middleware(['auth'])->get('/settings' ,function(){
+    return view('settings');
+});
+
+
+
 
 /* Route::group(['middleware' => 'auth'], function(){
 
