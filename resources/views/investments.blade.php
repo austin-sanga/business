@@ -4,24 +4,144 @@
 
 <h5 class="text-center" style="color:#0B9050 ">Investments</h5>
 
-<div class="{{-- col-md-6  --}}{{-- col-xl-3 --}} mb-4 mx-5">
-    <a href="ministatement" class="text-decoration-none">{{-- link to the mini-statement --}}
+<div class=" mb-4 mx-5">
     <div class="card shadow border-start-primary py-2" >
-        <div class="card-body">
+        <div class="dropdown">
+        <div class="card-body " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             <div class="row align-items-center no-gutters">
                 <div class="col-auto">
-                    <i class="bi bi-journals" style="font-size: 40px; color:black"></i>
+                    <i class="bi bi-bank" style="font-size: 40px; color:black"></i>
                 </div>
                 <div class="col me-2">
-                    <div class=" fw-bold text-black text-xs mb-1 " {{-- style="color: #0B9050" --}}><span>Investment accounts</span></div>
+                    <div class=" fw-bold text-black text-xs mb-1 "><span>Investment accounts</span></div>
                  </div>
                  <div class="col-auto">
                     <i class="bi bi-arrow-right-short" style="font-size: 40px; color:#0B9050"></i>
                 </div>
             </div>
         </div>
+
+            <ul class="dropdown-menu dropdown-menu-large" aria-labelledby="dropdownMenuButton1">
+                <li>Projects: {{-- money  --}}20,000,000</li>
+                <hr class="dropdown-divider">
+                <li>Savings: {{-- savings account --}}20,000,000</li>
+                <hr class="dropdown-divider">
+                <li class="text"><button class=" btn btn-success">Withdraw</button></li>
+              </ul>
     </div>
-    </a>
+    </div>
+
+</div>
+
+{{-- start of the below part --}}
+
+<div class="bg-white">
+
+<div class="row mx-5">
+    <div class="col">
+        <a href="#invest" class="text-decoration-none">
+        <div class="card shadow" style="background-color: #F5F5F5">
+            <div class="card-body text-center">
+                <span class="fw-bold" style="color: #0B9050">INVEST</span>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col">
+        <a href="#save" class="text-decoration-none">
+        <div class="card shadow" style="background-color: #F5F5F5">
+            <div class="card-body text-center">
+                <span class="fw-bold" style="color: #0B9050">SAVE</span>
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+
+<div class="mx-5 mt-3">
+<table class="table table-striped border caption-top">
+    <caption>Open opportunities</caption>
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col" class="text-end">Budget</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mark</td>
+        <td class="text-end">Otto</td>
+      </tr>
+      <tr>
+        <td colspan="2" class="text-center"><a href="#viewmore" style="color: #0B9050" > View more</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="mx-5 mt-3">
+    <table class="table table-striped border caption-top">
+        <caption>Verification Status</caption>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col" class="text-end">Invested</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mark</td>
+            <td class="text-end">Otto</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="text-center"><a href="#viewmore"  style="color: #0B9050" > View more</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mx-5 mt-3">
+        <table class="table table-striped border caption-top">
+            <caption>Ongoing Investments</caption>
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col" class="text-end">Invested</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mark</td>
+                <td class="text-end">Otto</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="text-center"><a href="#viewmore" style="color: #0B9050" > View more</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mx-5 mt-3">
+            <table class="table table-striped border caption-top">
+                <caption>Matured Investments</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col" class="text-end">Invested</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mark</td>
+                    <td class="text-end">Otto</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" class="text-center"><a href="#viewmore" style="color: #0B9050" > View more</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
 </div>
 
 
