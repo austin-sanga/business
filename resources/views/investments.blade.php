@@ -26,7 +26,7 @@
                 <hr class="dropdown-divider">
                 <li>Savings: {{-- savings account --}}20,000,000</li>
                 <hr class="dropdown-divider">
-                <li class="text"><button class=" btn btn-success">Withdraw</button></li>
+                <li class="text"><a href="withdraw" class="text-decoration-none"> <button class=" btn btn-success">Withdraw</button></a></li>
               </ul>
     </div>
     </div>

@@ -40,6 +40,9 @@ Route::middleware(['auth'])->get('/settings' ,function(){
     return view('settings');
 });
 
+Route::middleware(['auth'])->get('/withdraw' ,function(){
+    return view('withdraw');
+});
 
 
 
