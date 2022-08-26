@@ -44,6 +44,10 @@ Route::middleware(['auth'])->get('/withdraw' ,function(){
     return view('withdraw');
 });
 
+Route::middleware(['auth'])->get('/invest' ,function(){
+    return view('invest');
+});
+
 
 
 /* Route::group(['middleware' => 'auth'], function(){

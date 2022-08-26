@@ -39,7 +39,7 @@
 
 <div class="row mx-5">
     <div class="col">
-        <a href="#invest" class="text-decoration-none">
+        <a href="invest" class="text-decoration-none">
         <div class="card shadow" style="background-color: #F5F5F5">
             <div class="card-body text-center">
                 <span class="fw-bold" style="color: #0B9050">INVEST</span>
