@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h5 class="text-center" style="color:#0B9050 ">Investments</h5>
+<h5 class="text-center" style="color:#0B9050 ">Invest</h5>
 
 <div class="bg-white p-3"  style="height:85vh; position: relative;">
 
