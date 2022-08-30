@@ -48,7 +48,7 @@
         </a>
     </div>
     <div class="col">
-        <a href="#save" class="text-decoration-none">
+        <a href="save" class="text-decoration-none">
         <div class="card shadow" style="background-color: #F5F5F5">
             <div class="card-body text-center">
                 <span class="fw-bold" style="color: #0B9050">SAVE</span>

@@ -48,6 +48,13 @@ Route::middleware(['auth'])->get('/invest' ,function(){
     return view('invest');
 });
 
+Route::middleware(['auth'])->get('/save' ,function(){
+    return view('save');
+});
+
+Route::middleware(['auth'])->get('/ongoinginvestment' ,function(){
+    return view('ongoinginvestment');
+});
 
 
 /* Route::group(['middleware' => 'auth'], function(){
