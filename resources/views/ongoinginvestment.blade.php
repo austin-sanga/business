@@ -48,6 +48,13 @@
         </div>
         <hr>
     </div>
+    <div class="m-3">
+        <div><h4 class="text-muted ">Project manager notice</h4></div>
+        <div class="rounded p-2" style="background-color: #F5F5F5 ">
+            <h4>{{-- title --}} Lorem, ipsum dolor.</h4>
+            <p>{{-- paragraph of content --}} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel ducimus quos, vero minima sint culpa dolores eligendi omnis ut iste magnam reiciendis dicta inventore quam aut non. Odit distinctio, debitis cumque alias nulla, sunt sint sed nihil, cum a molestias magni architecto consequatur autem provident quaerat reiciendis rerum. Facere odit magnam est doloremque minima eaque minus dicta deserunt debitis optio?</p>
+        </div>
+    </div>
 
 
 </div>
