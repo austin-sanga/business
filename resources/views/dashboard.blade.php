@@ -46,7 +46,7 @@
 
 <div class="text-center gutter-2">
     <h2 class="text-center">Where will you work today?</h2>
-    <div class="row ">
+    {{-- <div class="row ">
         <div class="col ms-5">
             <a href="investments" class="text-decoration-none">
             <div class="card bg-white mx-3">
@@ -66,7 +66,15 @@
             </div>
             </a>
         </div>
-    </div>
+    </div> --}}
+
+    {{-- perform a role check to perform task --}}
+    @if (Auth::user()->role==1)
+    <h2>chiken</h2>
+    @else
+    @include('layouts.includes.managerworks')
+    @endif
+
 </div>
 
 <div class="m-5">
