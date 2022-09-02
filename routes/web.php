@@ -56,6 +56,10 @@ Route::middleware(['auth'])->get('/ongoinginvestment' ,function(){
     return view('ongoinginvestment');
 });
 
+Route::middleware(['auth'])->get('/openopportunity' ,function(){
+    return view('openopportunity');
+});
+
 
 /* Route::group(['middleware' => 'auth'], function(){
 
