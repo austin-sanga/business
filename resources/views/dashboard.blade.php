@@ -1,3 +1,4 @@
+{{-- start of the actual dashboard for users --}}
 @extends('layouts.main')
 
 @section('content')
@@ -46,35 +47,15 @@
 
 <div class="text-center gutter-2">
     <h2 class="text-center">Where will you work today?</h2>
-    {{-- <div class="row ">
-        <div class="col ms-5">
-            <a href="investments" class="text-decoration-none">
-            <div class="card bg-white mx-3">
-            <div><i class="bi bi-currency-dollar" style="font-size:40px; color:#0B9050"></i></div>
-            <div><span style="color: black">Investments</span>
-            </div>
-            </div>
-            </a>
-        </div>
 
-        <div class="col me-5">
-            <a href="loans" class="text-decoration-none">
-            <div class="card bg-white mx-3">
-            <div><i class="bi bi-cash-coin" style="font-size:40px; color:#0B9050"></i></div>
-            <div><span style="color: black">Loans</span>
-            </div>
-            </div>
-            </a>
-        </div>
-    </div> --}}
-
-    {{-- perform a role check to perform task --}}
+    {{-- insertion depending on the roles of the users  --}}
     @if (Auth::user()->role==1)
-    <h2>chiken</h2>
-    @else
-    @include('layouts.includes.managerworks')
+        @include('layouts.includes.adminworks')
+    @elseif (Auth::user()->role==2)
+         @include('layouts.includes.managerworks')
+    @elseif (Auth::user()->role==3)
+        @include('layouts.includes.memberworks')
     @endif
-
 </div>
 
 <div class="m-5">
@@ -94,4 +75,6 @@
 @csrf
 <a href="/logout" onclick="event.preventDefault();this.closest('form').submit();"> Logout </a>
 </form> --}}
+
+
 
