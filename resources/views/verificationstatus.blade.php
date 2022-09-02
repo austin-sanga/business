@@ -2,11 +2,17 @@
 
 @section('content')
 
-<h5 class="text-center" style="color:#0B9050 ">Open opportunity</h5>
+<h5 class="text-center" style="color:#0B9050 ">Verification status</h5>
 
 <div class="bg-white p-3"  style="height:85vh;">
 
-    <div class="px-3 pt-4">
+    <div class="px-3">
+        <div class="row text-muted">
+        <div class="col"><span>ID #2324{{-- id of the project --}}</span></div>
+        <div class="col  justify-content-end text-end"><span>status: pending {{-- status pulled here --}}</span></div>
+        </div>
+    </div>
+    <div class="px-3 pt-3">
         <div class="row ">
         <div class="col"><span>Name</span></div>
         <div class="col  justify-content-end text-end"><span>{{-- name of project --}}project phase 1</span></div>
@@ -15,36 +21,28 @@
     </div>
     <div class="px-3">
         <div class="row ">
-        <div class="col"><span>est.Start date</span></div>
+        <div class="col"><span>Date of deposit</span></div>
         <div class="col  justify-content-end text-end"><span>{{-- date of start --}}25 july 2020</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
-        <div class="col"><span>est.Duration</span></div>
+        <div class="col"><span>Date of filling</span></div>
         <div class="col  justify-content-end text-end"><span>{{-- date of end --}}27 july 2021</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
-        <div class="col"><span>Budget</span></div>
+        <div class="col"><span>Type of filling</span></div>
         <div class="col  justify-content-end text-end"><span>{{-- invested amount --}}23,000,000</span></div>
-        </div>
-        <div class="row text-muted">
-            <div class="col"><span>Per person</span></div>
-            <div class="col  justify-content-end text-end"><span>{{-- amount --}}120,000,000</span></div>
-        </div>
-        <div class="row text-muted">
-            <div class="col"><span>Remaining</span></div>
-            <div class="col  justify-content-end text-end"><span>{{-- amount --}}120,000,000</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
-        <div class="col"><span>Est. ROI</span></div>
+        <div class="col"><span>Amount deposited</span></div>
         <div class="col  justify-content-end text-end"><span>{{-- amount --}}120,000,000</span></div>
         </div>
         <hr>
@@ -52,7 +50,7 @@
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Project manager</span></div>
-        <div class="col  justify-content-end text-end"><span>Mr john john</span></div>
+        <div class="col  justify-content-end text-end"><span>Mr john john</span></div>{{-- name of the project manager --}}
         </div>
         <hr>
     </div>

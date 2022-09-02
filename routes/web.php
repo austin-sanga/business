@@ -60,6 +60,10 @@ Route::middleware(['auth'])->get('/openopportunity' ,function(){
     return view('openopportunity');
 });
 
+Route::middleware(['auth'])->get('/verificationstatus' ,function(){
+    return view('verificationstatus');
+});
+
 
 /* Route::group(['middleware' => 'auth'], function(){
 
