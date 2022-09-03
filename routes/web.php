@@ -64,6 +64,18 @@ Route::middleware(['auth'])->get('/verificationstatus' ,function(){
     return view('verificationstatus');
 });
 
+Route::middleware(['auth'])->get('/membership' ,function(){
+    return view('membership');
+});
+
+Route::middleware(['auth'])->get('/userrequests' ,function(){
+    return view('userrequests');
+});
+
+Route::middleware(['auth'])->get('/specificrequest' ,function(){
+    return view('specificrequest');
+});
+
 
 /* Route::group(['middleware' => 'auth'], function(){
 
