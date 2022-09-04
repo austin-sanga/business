@@ -38,7 +38,7 @@ class User extends Authenticatable
         'nida',
         'gender',
         'phone_number',
-        /* 'second_phone_number', */
+        'second_phone_number',
         'email',
         'password',
     ];

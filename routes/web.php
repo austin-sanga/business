@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\MembershipController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,13 +68,12 @@ Route::middleware(['auth'])->get('/membership' ,function(){
     return view('membership');
 });
 
-Route::middleware(['auth'])->get('/userrequests' ,function(){
-    return view('userrequests');
-});
+Route::middleware(['auth'])->get('/userrequests' ,[MembershipController::class,"listrole0"]);
 
-Route::middleware(['auth'])->get('/specificrequest' ,function(){
-    return view('specificrequest');
-});
+Route::middleware(['auth'])->get('/specificrequest/{id}' ,[MembershipController::class,"specificrequest"]);
+
+Route::/* middleware(['auth'])-> */post('/updateRole' ,[MembershipController::class,"updateRole"]);
+
 
 
 /* Route::group(['middleware' => 'auth'], function(){

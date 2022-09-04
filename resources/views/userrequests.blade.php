@@ -4,6 +4,12 @@
 
 <h5 class="text-center" style="color:#0B9050 ">User Requests</h5>
 
+@if (session('status'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('status') }}
+      </div>
+    @endif
+
 <div class="container pt-4 bg-white" >
     <div class="px-3 ">
         <div class="row text-muted">
@@ -14,15 +20,17 @@
     </div>
 
     {{-- below is the recuression for the member requests --}}
+    @foreach ($users as $item)
     <div class="px-3 ">
-        <a href="specificrequest" class="text-decoration-none">
+        <a href="specificrequest/{{ $item->id }}" class="text-decoration-none">
         <div class="row text-black">
-        <div class="col "><span>{{-- name of member --}}John John</span></div>
-        <div class="col  justify-content-end text-end"><span>{{-- request date --}}25 july 2020</span></div>
+        <div class="col "><span>{{ $item->first_name }} {{ $item->middle_name }} {{ $item->last_name }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $item->created_at->format('d/m/Y') }}</span></div>
         </div>
         </a>
         <hr>
     </div>
+    @endforeach
 
 </div>
 @stop
