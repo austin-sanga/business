@@ -9,6 +9,13 @@ class MembershipController extends Controller
 {
     //controller dealing with membership of the app
 
+    // redirect to membership page, sending members details.
+    function membership(){
+        $data=[1,2,3];
+        $users = User::where('role',$data)->all();
+        return view('membership', ['users'=>$users]);
+    }
+
     // listing all of the unassigned role users
     function listrole0(){
         $users = User::where('role','0')->get();
@@ -25,18 +32,11 @@ class MembershipController extends Controller
     // updating the users role
     function updateRole(Request $req)
     {
-        /* $user = User::find($req->id);
-        $resto->name=$req->name;
-        $resto->email=$req->email;
-        $resto->address=$req->address;
-        $resto->save(); */
+        $user = User::find($req->id);
 
+        $user->role = $req->role;
 
-$user = User::find($req->id);
-
-$user->role = $req->role;
-
-$user->save();
+        $user->save();
 
         // flash session initiation
         $req->session()->flash('status','Restaurant updated succesfully');

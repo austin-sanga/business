@@ -6,7 +6,7 @@
 
 
 <div class="{{-- col-md-6  --}}{{-- col-xl-3 --}} mb-4 mx-5">
-    <a href="ministatement" class="text-decoration-none">{{-- link to the user requests --}}
+    <a href="userrequests" class="text-decoration-none">{{-- link to the user requests --}}
     <div class="card shadow border-start-primary py-2" >
         <div class="card-body">
             <div class="row align-items-center no-gutters">
@@ -33,13 +33,15 @@
     </div>
 
     {{-- below is the recuression for the members with positions --}}
+    @foreach ($users as $item)
     <div class="px-3 ">
         <div class="row ">
-        <div class="col"><span>{{-- name of member --}}John John</span></div>
+        <div class="col"><span>{{ $item->first_name }} {{ $item->middle_name }} {{ $item->last_name }}</span></div>
         <div class="col  justify-content-end text-end"><span>{{-- members position --}}Member</span></div>
         </div>
         <hr>
     </div>
+    @endforeach
 
 </div>
 @stop

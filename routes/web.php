@@ -64,9 +64,7 @@ Route::middleware(['auth'])->get('/verificationstatus' ,function(){
     return view('verificationstatus');
 });
 
-Route::middleware(['auth'])->get('/membership' ,function(){
-    return view('membership');
-});
+Route::middleware(['auth'])->get('/membership' ,[MembershipController::class,"membership"]);
 
 Route::middleware(['auth'])->get('/userrequests' ,[MembershipController::class,"listrole0"]);
 
