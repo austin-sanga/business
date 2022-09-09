@@ -11,8 +11,7 @@ class MembershipController extends Controller
 
     // redirect to membership page, sending members details.
     function membership(){
-        $data=[1,2,3];
-        $users = User::where('role',$data)->all();
+        $users = User::whereNotIn('role', array(0))->get();
         return view('membership', ['users'=>$users]);
     }
 
