@@ -37,7 +37,17 @@
     <div class="px-3 ">
         <div class="row ">
         <div class="col"><span>{{ $item->first_name }} {{ $item->middle_name }} {{ $item->last_name }}</span></div>
-        <div class="col  justify-content-end text-end"><span>{{-- members position --}}Member</span></div>
+        <div class="col  justify-content-end text-end">
+    <span>
+        @if ( $item->role==1)
+            Admin
+        @elseif ($item->role==2)
+            Project Manager
+        @elseif ($item->role==3)
+            Member
+        @endif
+    </span>
+    </div>
         </div>
         <hr>
     </div>

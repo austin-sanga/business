@@ -38,7 +38,7 @@ class MembershipController extends Controller
         $user->save();
 
         // flash session initiation
-        $req->session()->flash('status','Restaurant updated succesfully');
+        $req->session()->flash('status','User role assigned');
 
         return redirect('userrequests');
     }
