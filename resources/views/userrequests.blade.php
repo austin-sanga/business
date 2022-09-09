@@ -2,7 +2,12 @@
 
 @section('content')
 
-<h5 class="text-center" style="color:#0B9050 ">User Requests</h5>
+{{-- link towards the previous page --}}
+<div class="row">
+    <div class="col-auto"><a href="membership"><i class="bi bi-arrow-left-short" style="font-size: 40px; color:#0B9050"> </i></a></div>
+    <div class="col"><h5 class="text-center pt-3 me-5" style="color:#0B9050 ">User Requests</h5></div>
+</div>
+
 
 @if (session('status'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
