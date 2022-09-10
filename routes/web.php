@@ -116,6 +116,33 @@ Route::middleware(['auth'])->get('/viewmoremanagerongoinginvestment' ,function()
     return view('viewmoremanagerongoinginvestment');
 });
 
+Route::middleware(['auth'])->get('/investmentverification' ,function(){
+    return view('investmentverification');
+});
+
+Route::middleware(['auth'])->get('/viewmoreverificationqueue' ,function(){
+    return view('viewmoreverificationqueue');
+});
+
+Route::middleware(['auth'])->get('/startproject' ,function(){
+    return view('startproject');
+});
+
+Route::middleware(['auth'])->get('/startproject' ,function(){
+    return view('startproject');
+});
+
+Route::middleware(['auth'])->get('/viewmoreadminmaturedinvestment' ,function(){
+    return view('viewmoreadminmaturedinvestment');
+});
+
+Route::middleware(['auth'])->get('/editfinaldetails' ,function(){
+    return view('editfinaldetails');
+});
+
+
+
+
 
 
 /* Route::group(['middleware' => 'auth'], function(){
