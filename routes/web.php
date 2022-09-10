@@ -72,8 +72,41 @@ Route::middleware(['auth'])->get('/specificrequest/{id}' ,[MembershipController:
 
 Route::/* middleware(['auth'])-> */post('/updateRole' ,[MembershipController::class,"updateRole"]);
 
+Route::middleware(['auth'])->get('/projectmanager' ,function(){
+    return view('projectmanager');
+});
 
+Route::middleware(['auth'])->get('/newproject' ,function(){
+    return view('newproject');
+});
 
+Route::middleware(['auth'])->get('/publishedproject' ,function(){
+    return view('publishedproject');
+});
+
+Route::middleware(['auth'])->get('/viewmorematuredinvestment' ,function(){
+    return view('viewmorematuredinvestment');
+});
+
+Route::middleware(['auth'])->get('/viewmoreongoinginvestment' ,function(){
+    return view('viewmoreongoinginvestment');
+});
+
+Route::middleware(['auth'])->get('/viewmoreopenopportunity' ,function(){
+    return view('viewmoreopenopportunity');
+});
+
+Route::middleware(['auth'])->get('/viewmorependingverification' ,function(){
+    return view('viewmorependingverification');
+});
+
+Route::middleware(['auth'])->get('/maturedinvestment' ,function(){
+    return view('maturedinvestment');
+});
+
+Route::middleware(['auth'])->get('/matureproject' ,function(){
+    return view('matureproject');
+});
 /* Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['middleware' => 'role:admin,manager,member'], function(){

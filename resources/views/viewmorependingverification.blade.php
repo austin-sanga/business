@@ -1,0 +1,34 @@
+@extends('layouts.main')
+
+@section('content')
+
+{{-- link towards the previous page --}}
+<div class="row">
+    <div class="col-auto"><a href="{{ url()->previous() }}"><i class="bi bi-arrow-left-short" style="font-size: 40px; color:#0B9050"> </i></a></div>
+    <div class="col"><h5 class="text-center pt-3 me-5" style="color:#0B9050 ">Pending verification</h5></div>
+</div>
+
+
+
+
+<div class="container pt-4 bg-white" >
+    <div class="px-3 ">
+        <div class="row text-muted">
+        <div class="col"><span>Name</span></div>
+        <div class="col  justify-content-end text-end"><span>Invested</span></div>
+        </div>
+        <hr>
+    </div>
+
+    {{-- below is the recuression for the matured investments --}}
+    <div class="px-3 ">
+        <div class="row ">
+        <div class="col"><span>Name of project</span></div>
+        <div class="col  justify-content-end text-end"><span>540,000,000</span></div>
+        </div>
+        <hr>
+    </div>
+
+
+</div>
+@stop
