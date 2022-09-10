@@ -112,6 +112,11 @@ Route::middleware(['auth'])->get('/adminongoingproject' ,function(){
     return view('adminongoingproject');
 });
 
+Route::middleware(['auth'])->get('/viewmoremanagerongoinginvestment' ,function(){
+    return view('viewmoremanagerongoinginvestment');
+});
+
+
 
 /* Route::group(['middleware' => 'auth'], function(){
 
