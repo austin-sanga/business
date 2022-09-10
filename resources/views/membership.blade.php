@@ -2,7 +2,11 @@
 
 @section('content')
 
-<h5 class="text-center" style="color:#0B9050 ">Membership</h5>
+{{-- link towards the previous page --}}
+<div class="row">
+    <div class="col-auto"><a href="{{ url()->previous() }}"><i class="bi bi-arrow-left-short" style="font-size: 40px; color:#0B9050"> </i></a></div>
+    <div class="col"><h5 class="text-center pt-3 me-5" style="color:#0B9050 ">Membership</h5></div>
+</div>
 
 
 <div class="{{-- col-md-6  --}}{{-- col-xl-3 --}} mb-4 mx-5">
