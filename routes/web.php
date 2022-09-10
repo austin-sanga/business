@@ -107,6 +107,12 @@ Route::middleware(['auth'])->get('/maturedinvestment' ,function(){
 Route::middleware(['auth'])->get('/matureproject' ,function(){
     return view('matureproject');
 });
+
+Route::middleware(['auth'])->get('/adminongoingproject' ,function(){
+    return view('adminongoingproject');
+});
+
+
 /* Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['middleware' => 'role:admin,manager,member'], function(){
