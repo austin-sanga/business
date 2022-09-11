@@ -71,3 +71,11 @@
 </div>
 
 @stop
+
+
+{{--
+    Auth
+    user
+    investment
+    loans
+    --}}

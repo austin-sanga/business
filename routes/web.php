@@ -25,15 +25,15 @@ Route::middleware(['auth'])->get('/dashboard' ,function(){
 });
 
 Route::middleware(['auth'])->get('/ministatement' ,function(){
-    return view('ministatement');
+    return view('investment.ministatement');
 });
 
 Route::middleware(['auth'])->get('/investments' ,function(){
-    return view('investments');
+    return view('investment.investments');
 });
 
 Route::middleware(['auth'])->get('/loans' ,function(){
-    return view('loans');
+    return view('loans.loans');
 });
 
 Route::middleware(['auth'])->get('/settings' ,function(){
@@ -41,27 +41,27 @@ Route::middleware(['auth'])->get('/settings' ,function(){
 });
 
 Route::middleware(['auth'])->get('/withdraw' ,function(){
-    return view('withdraw');
+    return view('investment.withdraw');
 });
 
 Route::middleware(['auth'])->get('/invest' ,function(){
-    return view('invest');
+    return view('investment.invest');
 });
 
 Route::middleware(['auth'])->get('/save' ,function(){
-    return view('save');
+    return view('investment.save');
 });
 
 Route::middleware(['auth'])->get('/ongoinginvestment' ,function(){
-    return view('ongoinginvestment');
+    return view('investment.ongoinginvestment');
 });
 
 Route::middleware(['auth'])->get('/openopportunity' ,function(){
-    return view('openopportunity');
+    return view('investment.openopportunity');
 });
 
 Route::middleware(['auth'])->get('/verificationstatus' ,function(){
-    return view('verificationstatus');
+    return view('investment.verificationstatus');
 });
 
 Route::middleware(['auth'])->get('/membership' ,[MembershipController::class,"membership"]);
@@ -70,74 +70,71 @@ Route::middleware(['auth'])->get('/userrequests' ,[MembershipController::class,"
 
 Route::middleware(['auth'])->get('/specificrequest/{id}' ,[MembershipController::class,"specificrequest"]);
 
-Route::/* middleware(['auth'])-> */post('/updateRole' ,[MembershipController::class,"updateRole"]);
+Route::middleware(['auth'])->post('/updateRole' ,[MembershipController::class,"updateRole"]);/* comment out the middleware if doesnt work */
 
 Route::middleware(['auth'])->get('/projectmanager' ,function(){
-    return view('projectmanager');
+    return view('investment.projectmanager');
 });
 
 Route::middleware(['auth'])->get('/newproject' ,function(){
-    return view('newproject');
+    return view('investment.newproject');
 });
 
 Route::middleware(['auth'])->get('/publishedproject' ,function(){
-    return view('publishedproject');
+    return view('investment.publishedproject');
 });
 
 Route::middleware(['auth'])->get('/viewmorematuredinvestment' ,function(){
-    return view('viewmorematuredinvestment');
+    return view('investment.viewmorematuredinvestment');
 });
 
 Route::middleware(['auth'])->get('/viewmoreongoinginvestment' ,function(){
-    return view('viewmoreongoinginvestment');
+    return view('investment.viewmoreongoinginvestment');
 });
 
 Route::middleware(['auth'])->get('/viewmoreopenopportunity' ,function(){
-    return view('viewmoreopenopportunity');
+    return view('investment.viewmoreopenopportunity');
 });
 
 Route::middleware(['auth'])->get('/viewmorependingverification' ,function(){
-    return view('viewmorependingverification');
+    return view('investment.viewmorependingverification');
 });
 
 Route::middleware(['auth'])->get('/maturedinvestment' ,function(){
-    return view('maturedinvestment');
+    return view('investment.maturedinvestment');
 });
 
 Route::middleware(['auth'])->get('/matureproject' ,function(){
-    return view('matureproject');
+    return view('investment.matureproject');
 });
 
 Route::middleware(['auth'])->get('/adminongoingproject' ,function(){
-    return view('adminongoingproject');
+    return view('investment.adminongoingproject');
 });
 
 Route::middleware(['auth'])->get('/viewmoremanagerongoinginvestment' ,function(){
-    return view('viewmoremanagerongoinginvestment');
+    return view('investment.viewmoremanagerongoinginvestment');
 });
 
 Route::middleware(['auth'])->get('/investmentverification' ,function(){
-    return view('investmentverification');
+    return view('investment.investmentverification');
 });
 
 Route::middleware(['auth'])->get('/viewmoreverificationqueue' ,function(){
-    return view('viewmoreverificationqueue');
+    return view('investment.viewmoreverificationqueue');
 });
 
-Route::middleware(['auth'])->get('/startproject' ,function(){
-    return view('startproject');
-});
 
 Route::middleware(['auth'])->get('/startproject' ,function(){
-    return view('startproject');
+    return view('investment.startproject');
 });
 
 Route::middleware(['auth'])->get('/viewmoreadminmaturedinvestment' ,function(){
-    return view('viewmoreadminmaturedinvestment');
+    return view('investment.viewmoreadminmaturedinvestment');
 });
 
 Route::middleware(['auth'])->get('/editfinaldetails' ,function(){
-    return view('editfinaldetails');
+    return view('investment.editfinaldetails');
 });
 
 
