@@ -8,6 +8,12 @@
     <div class="col"><h5 class="text-center pt-3 me-5" style="color:#0B9050 ">Investments</h5></div>
 </div>
 
+@if (session('status'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('status') }}
+      </div>
+    @endif
+
 <div class="mb-4 mx-5">
     <a href="newproject" class="text-decoration-none">{{-- link to the user requests --}}
     <div class="card shadow border-start-primary py-2" >
@@ -39,12 +45,14 @@
       </tr>
     </thead>
     <tbody>
+        @foreach ($published as $published)
+        <tr>
+            <td>{{ $published->name }}</td>
+            <td class="text-end">{{ $published->budget }}/=</td>
+          </tr>
+        @endforeach
       <tr>
-        <td>Mark</td>
-        <td class="text-end">Otto</td>
-      </tr>
-      <tr>
-        <td colspan="2" class="text-center"><a href="#viewmore" style="color: #0B9050" > View more</a></td>
+        <td colspan="2" class="text-center"><a href="viewmorepublishedprojects" style="color: #0B9050" > View more</a></td>
       </tr>
     </tbody>
   </table>
@@ -102,10 +110,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Mark</td>
-                    <td class="text-end">Otto</td>
-                  </tr>
+                    <tr>
+                        <td>Mark</td>
+                        <td class="text-end">Otto</td>
+                      </tr>
                   <tr>
                     <td colspan="2" class="text-center"><a href="#viewmore" style="color: #0B9050" > View more</a></td>
                   </tr>

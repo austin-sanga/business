@@ -17,15 +17,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->date('est_start_date');
-            $table->date('start_date');
+            $table->date('start_date')->nullable();
             $table->string('est_duration');
-            $table->date('date_of_maturity');
+            $table->date('date_of_maturity')->nullable();
             $table->bigInteger('budget');
             $table->bigInteger('est_roi');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->nullable();
             $table->string('manager_notice');
-            $table->string('project_contract');
-            $table->string('status_id');
+            $table->string('project_contract')->nullable();
+            $table->string('status_id')->default(1);
             $table->timestamps();
         });
     }

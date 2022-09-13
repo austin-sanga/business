@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\ProjectManagerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,17 +73,21 @@ Route::middleware(['auth'])->get('/specificrequest/{id}' ,[MembershipController:
 
 Route::middleware(['auth'])->post('/updateRole' ,[MembershipController::class,"updateRole"]);/* comment out the middleware if doesnt work */
 
-Route::middleware(['auth'])->get('/projectmanager' ,function(){
-    return view('investment.projectmanager');
-});
+Route::middleware(['auth'])->get('/projectmanager' ,[ProjectManagerController::class,"projectManager"]);
 
 Route::middleware(['auth'])->get('/newproject' ,function(){
     return view('investment.newproject');
 });
 
-Route::middleware(['auth'])->get('/publishedproject' ,function(){
-    return view('investment.publishedproject');
-});
+Route::middleware(['auth'])->get('/viewmorepublishedprojects' ,[ProjectManagerController::class,"viewMorePublishedProject"]);
+
+Route::middleware(['auth'])->post('/createProject' ,[ProjectManagerController::class,"createProject"]);
+
+Route::middleware(['auth'])->get('/publishedproject/{id}' ,[ProjectManagerController::class,"publishedProject"]);
+
+Route::middleware(['auth'])->get('/deletepublished/{id}' ,[ProjectManagerController::class,"deletePublished"]);
+
+Route::middleware(['auth'])->get('/editpublishedproject/{id}' ,[ProjectManagerController::class,"createProject"]);
 
 Route::middleware(['auth'])->get('/viewmorematuredinvestment' ,function(){
     return view('investment.viewmorematuredinvestment');
