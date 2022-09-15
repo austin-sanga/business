@@ -129,10 +129,7 @@ Route::middleware(['auth'])->get('/viewmoreverificationqueue' ,function(){
     return view('investment.viewmoreverificationqueue');
 });
 
-
-Route::middleware(['auth'])->get('/startproject' ,function(){
-    return view('investment.startproject');
-});
+Route::middleware(['auth'])->get('/startproject/{id}' ,[ProjectManagerController::class,"startProject"]);
 
 Route::middleware(['auth'])->get('/viewmoreadminmaturedinvestment' ,function(){
     return view('investment.viewmoreadminmaturedinvestment');

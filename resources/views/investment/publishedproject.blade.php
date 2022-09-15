@@ -71,7 +71,7 @@
 </div>
 
 <div class="text-center mt-3">
-    <button class="btn btn-success px-5">Start Project</button>
+    <a href="/startproject/{{$old->id }}"><button class="btn btn-success px-5">Start Project</button></a>
 </div>
 
 @stop

@@ -49,6 +49,10 @@ class ProjectManagerController extends Controller
     }
 
     // passing data on opening startproject
+    function startProject($id){
+        $data = NewProject::find($id);
+        return view('investment.startproject',['old'=>$data]);
+     }
 
 
     //creating project
