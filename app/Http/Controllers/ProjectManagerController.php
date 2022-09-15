@@ -48,6 +48,23 @@ class ProjectManagerController extends Controller
        return view('investment.editpublishedproject',['old'=>$data]);
     }
 
+    // update data to database of the editpublishedproject
+    function editUpdate(Request $req){
+        $project =  NewProject::find($req->id);
+        $project->name = $req->name;
+        $project->est_start_date = $req->est_start_date;
+        $project->est_duration = $req->est_duration;
+        $project->budget = $req->budget;
+        $project->est_roi = $req->est_roi;
+        $project->user_id = $req->user_id;
+        $project->manager_notice = $req->manager_notice;
+        $project->save();
+
+        return redirect('/publishedproject/$req->id');
+
+    }
+
+
     // passing data on opening startproject
     function startProject($id){
         $data = NewProject::find($id);
