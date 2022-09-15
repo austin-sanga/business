@@ -23,7 +23,15 @@ class ProjectManagerController extends Controller
 
     // published project view
     function publishedProject($id){
-        $published = NewProject::find($id);
+        /* $published = NewProject::find($id);
+        return view('investment.publishedproject',['old'=>$published]); */
+
+        $published = DB::table('new_projects')
+        ->join('users','users.id','=','new_projects.user_id')
+        ->where('new_projects.id',$id)
+        ->select('new_projects.name as projectName','new_projects.est_start_date','new_projects.est_duration','new_projects.budget','new_projects.est_roi','new_projects.est_roi','users.first_name as fname','users.middle_name as mname','users.last_name as lname','new_projects.manager_notice','new_projects.id')
+        ->first();
+
         return view('investment.publishedproject',['old'=>$published]);
     }
 
@@ -64,10 +72,15 @@ class ProjectManagerController extends Controller
 
     // test controller
 function showData(){
-    return DB::table('new_projects')
-     ->join('project_statuses','project_statuses.id','=','new_projects.status_id')
-     ->get();
+    $test = DB::table('new_projects')
+    ->join('project_statuses','project_statuses.id','=','new_projects.status_id')
+    ->where('new_projects.id',7)
+    ->select('new_projects.name as pname','project_statuses.status')
+    ->first();
+
+    return view('test',['test'=>$test]);
  }
+
 
 }
 

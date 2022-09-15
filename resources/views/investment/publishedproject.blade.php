@@ -13,7 +13,7 @@
     <div class="px-3 pt-4">
         <div class="row ">
         <div class="col"><span>Name</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $old->name}}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $old->projectName}}</span></div>
         </div>
         <hr>
     </div>
@@ -48,7 +48,7 @@
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>project manager</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $old->user_id}}</span> </div>
+        <div class="col  justify-content-end text-end"><span>{{ $old->fname}} {{ $old->mname}} {{ $old->lname}}</span> </div>
         </div>
         <hr>
     </div>
