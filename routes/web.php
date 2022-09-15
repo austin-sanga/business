@@ -87,7 +87,7 @@ Route::middleware(['auth'])->get('/publishedproject/{id}' ,[ProjectManagerContro
 
 Route::middleware(['auth'])->get('/deletepublished/{id}' ,[ProjectManagerController::class,"deletePublished"]);
 
-Route::middleware(['auth'])->get('/editpublishedproject/{id}' ,[ProjectManagerController::class,"createProject"]);
+Route::middleware(['auth'])->get('/editpublishedproject/{id}' ,[ProjectManagerController::class,"editpublished"]);
 
 Route::middleware(['auth'])->get('/viewmorematuredinvestment' ,function(){
     return view('investment.viewmorematuredinvestment');
@@ -144,6 +144,8 @@ Route::middleware(['auth'])->get('/editfinaldetails' ,function(){
 
 
 
+// test
+Route::get('/test' ,[ProjectManagerController::class,"showData"]);
 
 
 

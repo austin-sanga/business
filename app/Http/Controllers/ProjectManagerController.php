@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\NewProject;
+use Illuminate\Support\Facades\DB;
 
 class ProjectManagerController extends Controller
 {
@@ -28,13 +29,16 @@ class ProjectManagerController extends Controller
 
     // Delete published project
     function deletePublished($id){
-        newproject::find($id)->delete();
+        NewProject::find($id)->delete();
         session()->flash('status','Published project deleted');
         return redirect('/viewmorepublishedprojects');
     }
 
     //passing data on openening editpublishedproject
-
+    function editpublished($id){
+       $data = NewProject::find($id);
+       return view('investment.editpublishedproject',['old'=>$data]);
+    }
 
     // passing data on opening startproject
 
@@ -58,4 +62,14 @@ class ProjectManagerController extends Controller
 
     }
 
+    // test controller
+function showData(){
+    return DB::table('new_projects')
+     ->join('project_statuses','project_statuses.id','=','new_projects.status_id')
+     ->get();
+ }
+
 }
+
+
+
