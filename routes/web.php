@@ -91,6 +91,8 @@ Route::middleware(['auth'])->get('/editpublishedproject/{id}' ,[ProjectManagerCo
 
 Route::middleware(['auth'])->post('/updateEdit' ,[ProjectManagerController::class,"editUpdate"]);
 
+Route::middleware(['auth'])->post('/storeContract' ,[ProjectManagerController::class,"storeContract"]);
+
 Route::middleware(['auth'])->get('/viewmorematuredinvestment' ,function(){
     return view('investment.viewmorematuredinvestment');
 });

@@ -66,14 +66,14 @@
     <div class="m-3 mt-5">
         <div><h5 class="text-muted ">Project manager notice</h5></div>
         <div class="form-floating">
-            <textarea class="form-control bg-color:black" placeholder="{{ $old->manager_notice }}" id="floatingTextarea2" style="height: 100px" name="manager_notice" value="{{ $old->manager_notice }}"></textarea>
+            <textarea class="form-control bg-color:black"  id="floatingTextarea2" style="height: 100px" name="manager_notice">{{ $old->manager_notice }}</textarea>
             <label for="floatingTextarea2">Comments</label>
           </div>
     </div>
 
     <div class="row justify-content-around">
-        <div class="col-4 text-start ps-4"><button class="btn btn-danger px-5" type="button">Cancel</button></div>
-        <div class="col-4 text-center ps-4"><a href="/updateEdit"><button class="btn btn-warning px-5" type="submit">Save</button></a></div>
+        <div class="col-4 text-start ps-4"><a href="/publishedproject/{{ $old->id }}"><button class="btn btn-danger px-5" type="button">Cancel</button></a></div>
+        <div class="col-4 text-center ps-4"><button class="btn btn-warning px-5" type="submit">Save</button></div>
     </div>
     </form>
 </div>

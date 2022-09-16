@@ -26,9 +26,10 @@ class ProjectManagerController extends Controller
         /* $published = NewProject::find($id);
         return view('investment.publishedproject',['old'=>$published]); */
 
-        $published = DB::table('new_projects')
+        $published = NewProject::find($id)
+        /* $published = DB::table('new_projects') */
         ->join('users','users.id','=','new_projects.user_id')
-        ->where('new_projects.id',$id)
+        /* ->where('new_projects.id',$id) */
         ->select('new_projects.name as projectName','new_projects.est_start_date','new_projects.est_duration','new_projects.budget','new_projects.est_roi','new_projects.est_roi','users.first_name as fname','users.middle_name as mname','users.last_name as lname','new_projects.manager_notice','new_projects.id')
         ->first();
 
@@ -48,6 +49,7 @@ class ProjectManagerController extends Controller
        return view('investment.editpublishedproject',['old'=>$data]);
     }
 
+
     // update data to database of the editpublishedproject
     function editUpdate(Request $req){
         $project =  NewProject::find($req->id);
@@ -60,7 +62,7 @@ class ProjectManagerController extends Controller
         $project->manager_notice = $req->manager_notice;
         $project->save();
 
-        return redirect('/publishedproject/$req->id');
+        return redirect("/publishedproject/{$req->id}");
 
     }
 
@@ -71,6 +73,31 @@ class ProjectManagerController extends Controller
         return view('investment.startproject',['old'=>$data]);
      }
 
+
+    // saving photo to specific project
+    function storeContract(Request $req){
+
+        // validation
+        $req->validate([
+            'project_contract'=>'required|mimes:png,jpg,jpeg,pdf|max:2048'
+        ]);
+
+
+        $imageName = time().'_'.$req->project_contract->extension();
+
+        // public folder storing
+        $req->project_contract->move(public_path('ProjectContracts',$imageName));
+
+
+
+        // Storing project_contract in DB
+         $project =  NewProject::find($req->id);
+         $project->project_contract = $imageName;
+         $project->save();
+
+        return redirect('projectmanager');
+
+    }
 
     //creating project
     function createProject(Request $req){
