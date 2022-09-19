@@ -61,17 +61,17 @@
 
     <div class="row justify-content-around">
         <div class="col-4 text-start ps-4">
-            <a href="/deletepublished/{{$old->id }}"><button class="btn btn-danger px-5" type="button">Delete</button></a>
+            <a href="/deletepublished/{{$old->pid }}"><button class="btn btn-danger px-5" type="button">Delete</button></a>
         </div>
         <div class="col-4 text-end pe-3 ">
-            <a href="/editpublishedproject/{{$old->id }}"><button class="btn btn-warning px-5" type="submit">Edit</button></a>
+            <a href="/editpublishedproject/{{$old->pid }}"><button class="btn btn-warning px-5" type="submit">Edit</button></a>
         </div>
     </div>
 
 </div>
 
 <div class="text-center mt-3">
-    <a href="/startproject/{{$old->id }}"><button class="btn btn-success px-5">Start Project</button></a>
+    <a href="/startproject/{{$old->pid }}"><button class="btn btn-success px-5">Start Project</button></a>
 </div>
 
 @stop

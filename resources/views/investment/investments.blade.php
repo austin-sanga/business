@@ -72,12 +72,14 @@
       </tr>
     </thead>
     <tbody>
+        @foreach ($published as $published)
+        <tr>
+            <td>{{ $published->name }}</td>
+            <td class="text-end">{{ $published->budget }}/=</td>
+        </tr>
+        @endforeach
       <tr>
-        <td>Mark</td>
-        <td class="text-end">Otto</td>
-      </tr>
-      <tr>
-        <td colspan="2" class="text-center"><a href="#viewmore" style="color: #0B9050" > View more</a></td>
+        <td colspan="2" class="text-center"><a href="/viewmoreopenopportunity" style="color: #0B9050" > View more</a></td>
       </tr>
     </tbody>
   </table>
@@ -114,12 +116,14 @@
               </tr>
             </thead>
             <tbody>
+                @foreach ($ongoing as $ongoing)
+                <tr>
+                    <td>{{ $ongoing->name }}</td>
+                    <td class="text-end">{{ $ongoing->budget }}/=</td>
+                </tr>
+                @endforeach
               <tr>
-                <td>Mark</td>
-                <td class="text-end">Otto</td>
-              </tr>
-              <tr>
-                <td colspan="2" class="text-center"><a href="#viewmore" style="color: #0B9050" > View more</a></td>
+                <td colspan="2" class="text-center"><a href="/viewmoreongoinginvestment" style="color: #0B9050" > View more</a></td>
               </tr>
             </tbody>
           </table>

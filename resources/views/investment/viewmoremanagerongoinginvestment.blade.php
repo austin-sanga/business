@@ -22,11 +22,15 @@
 
     {{-- below is the recuression for the ongoing investments --}}
     <div class="px-3 ">
+        @foreach ($ongoing as $ongoing)
+        <a href="publishedproject/{{ $ongoing->id }}">
         <div class="row ">
-        <div class="col"><span>Name of project</span></div>
-        <div class="col  justify-content-end text-end"><span>540,000,000</span></div>
+        <div class="col"><span>{{ $ongoing->name }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $ongoing->budget }}</span></div>
         </div>
+        </a>
         <hr>
+        @endforeach
     </div>
 
 

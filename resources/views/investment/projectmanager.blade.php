@@ -49,7 +49,7 @@
         <tr>
             <td>{{ $published->name }}</td>
             <td class="text-end">{{ $published->budget }}/=</td>
-          </tr>
+        </tr>
         @endforeach
       <tr>
         <td colspan="2" class="text-center"><a href="viewmorepublishedprojects" style="color: #0B9050" > View more</a></td>
@@ -68,12 +68,12 @@
           </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>Mark</td>
+                <td class="text-end">Otto</td>
+              </tr>
           <tr>
-            <td>Mark</td>
-            <td class="text-end">Otto</td>
-          </tr>
-          <tr>
-            <td colspan="2" class="text-center"><a href="#viewmore"  style="color: #0B9050" > View more</a></td>
+            <td colspan="2" class="text-center"><a href="viewmoreverificationqueue"  style="color: #0B9050" > View more</a></td>
           </tr>
         </tbody>
       </table>
@@ -89,12 +89,14 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($ongoing as $ongoing)
+            <tr>
+                <td>{{ $ongoing->name }}</td>
+                <td class="text-end">{{ $ongoing->budget }}/=</td>
+            </tr>
+            @endforeach
               <tr>
-                <td>Mark</td>
-                <td class="text-end">Otto</td>
-              </tr>
-              <tr>
-                <td colspan="2" class="text-center"><a href="#viewmore" style="color: #0B9050" > View more</a></td>
+                <td colspan="2" class="text-center"><a href="viewmoremanagerongoinginvestment" style="color: #0B9050" > View more</a></td>
               </tr>
             </tbody>
           </table>
@@ -110,12 +112,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td class="text-end">Otto</td>
-                      </tr>
+                    @foreach ($matured as $matured)
+                <tr>
+                <td>{{ $matured->name }}</td>
+                <td class="text-end">{{ $matured->budget }}/=</td>
+                </tr>
+                     @endforeach
                   <tr>
-                    <td colspan="2" class="text-center"><a href="#viewmore" style="color: #0B9050" > View more</a></td>
+                    <td colspan="2" class="text-center"><a href="viewmorematuredinvestment" style="color: #0B9050" > View more</a></td>
                   </tr>
                 </tbody>
               </table>

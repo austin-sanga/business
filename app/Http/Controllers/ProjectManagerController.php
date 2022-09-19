@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\NewProject;
+use App\Models\FiledInvestment;
 use Illuminate\Support\Facades\DB;
 
 class ProjectManagerController extends Controller
@@ -11,26 +12,41 @@ class ProjectManagerController extends Controller
 
     // displaying project manager & its contents
     function projectManager(){
-        $project = NewProject::skip(0)->take(3)->get();
-        return view('investment.projectmanager', ['published'=>$project]);
+        $published = NewProject::where('status_id','1')->skip(0)->take(3)->get();
+        $ongoing  = NewProject::where('status_id','2')->skip(0)->take(3)->get();
+        $matured = NewProject::where('status_id','3')->skip(0)->take(3)->get();
+        return view('investment.projectmanager', compact('published','ongoing','matured'));
+
     }
 
-    // viewmore published projects
+    // view more published projects
     function viewMorePublishedProject(){
         $published = NewProject::where('status_id','1')->get();
         return view('investment.viewmorepublishedprojects', ['published'=>$published]);
     }
 
+    // view more admin ongoing projects
+    function viewMoreOngoingProject(){
+        $ongoing = NewProject::where('status_id','2')->get();
+        return view('investment.viewmoremanagerongoinginvestment', ['ongoing'=>$ongoing]);
+    }
+
+    // view more admin matured projects
+    function viewMoreMaturedProject(){
+        $matured = NewProject::where('status_id','3')->get();
+        return view('investment.viewmoreadminmaturedinvestment', ['matured'=>$matured]);
+    }
+
+    // view more verification queue
+
+
     // published project view
     function publishedProject($id){
-        /* $published = NewProject::find($id);
-        return view('investment.publishedproject',['old'=>$published]); */
 
-        $published = NewProject::find($id)
-        /* $published = DB::table('new_projects') */
+        $published = DB::table('new_projects')
         ->join('users','users.id','=','new_projects.user_id')
-        /* ->where('new_projects.id',$id) */
-        ->select('new_projects.name as projectName','new_projects.est_start_date','new_projects.est_duration','new_projects.budget','new_projects.est_roi','new_projects.est_roi','users.first_name as fname','users.middle_name as mname','users.last_name as lname','new_projects.manager_notice','new_projects.id')
+        ->where('new_projects.id',$id)
+        ->select('new_projects.name as projectName','new_projects.est_start_date','new_projects.est_duration','new_projects.budget','new_projects.est_roi','new_projects.est_roi','users.first_name as fname','users.middle_name as mname','users.last_name as lname','new_projects.manager_notice','new_projects.id as pid')
         ->first();
 
         return view('investment.publishedproject',['old'=>$published]);
@@ -93,11 +109,26 @@ class ProjectManagerController extends Controller
         // Storing project_contract in DB
          $project =  NewProject::find($req->id);
          $project->project_contract = $imageName;
-         $project->save();
+         $project->status_id = 2;
+         $saved = $project->save();
 
-        return redirect('projectmanager');
+        //  check if project contract got saved
+        if(!$saved){
+            App::abort(500, 'Error');
+        }
+
+        // passing data toward the edit (final details)
+        // top details
+        $finaldetails = NewProject::find($req->id);
+
+        // call on to contributors
+
+        return redirect("/editfinaldetails/{$req->id}",compact('finaldetails',));
 
     }
+
+    // Edit final details page
+
 
     //creating project
     function createProject(Request $req){

@@ -20,7 +20,7 @@
         <hr>
     </div>
 
-    {{-- below is the recuression for the matured investments --}}
+    {{-- below is the recuression for the published investments --}}
     <div class="px-3 ">
         @foreach ($published as $published)
         <a href="publishedproject/{{ $published->id }}">

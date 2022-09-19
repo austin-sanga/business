@@ -59,7 +59,7 @@
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Project manager</span></div>
-        <div class="col  justify-content-end text-end"><input type="email" class="form-control" id="inputEmail3"></div>
+        <div class="col  justify-content-end text-end"><input type="int" class="form-control" id="inputEmail3"></div>
         </div>
         <hr>
     </div>

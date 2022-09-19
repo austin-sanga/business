@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\ProjectManagerController;
+use App\Http\Controllers\InvestmentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,9 +30,7 @@ Route::middleware(['auth'])->get('/ministatement' ,function(){
     return view('investment.ministatement');
 });
 
-Route::middleware(['auth'])->get('/investments' ,function(){
-    return view('investment.investments');
-});
+Route::middleware(['auth'])->get('/investments' ,[InvestmentController::class,"investment"]);
 
 Route::middleware(['auth'])->get('/loans' ,function(){
     return view('loans.loans');
@@ -93,9 +92,7 @@ Route::middleware(['auth'])->post('/updateEdit' ,[ProjectManagerController::clas
 
 Route::middleware(['auth'])->post('/storeContract' ,[ProjectManagerController::class,"storeContract"]);
 
-Route::middleware(['auth'])->get('/viewmorematuredinvestment' ,function(){
-    return view('investment.viewmorematuredinvestment');
-});
+Route::middleware(['auth'])->get('/viewmorematuredinvestment' ,[ProjectManagerController::class,"viewMoreMaturedProject"]);
 
 Route::middleware(['auth'])->get('/viewmoreongoinginvestment' ,function(){
     return view('investment.viewmoreongoinginvestment');
@@ -121,9 +118,7 @@ Route::middleware(['auth'])->get('/adminongoingproject' ,function(){
     return view('investment.adminongoingproject');
 });
 
-Route::middleware(['auth'])->get('/viewmoremanagerongoinginvestment' ,function(){
-    return view('investment.viewmoremanagerongoinginvestment');
-});
+Route::middleware(['auth'])->get('/viewmoremanagerongoinginvestment' ,[ProjectManagerController::class,"viewMoreOngoingProject"]);
 
 Route::middleware(['auth'])->get('/investmentverification' ,function(){
     return view('investment.investmentverification');
@@ -139,7 +134,7 @@ Route::middleware(['auth'])->get('/viewmoreadminmaturedinvestment' ,function(){
     return view('investment.viewmoreadminmaturedinvestment');
 });
 
-Route::middleware(['auth'])->get('/editfinaldetails' ,function(){
+Route::middleware(['auth'])->get('/editfinaldetails/{id}' ,function(){
     return view('investment.editfinaldetails');
 });
 
