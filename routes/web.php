@@ -44,9 +44,9 @@ Route::middleware(['auth'])->get('/withdraw' ,function(){
     return view('investment.withdraw');
 });
 
-Route::middleware(['auth'])->get('/invest' ,function(){
-    return view('investment.invest');
-});
+Route::middleware(['auth'])->get('/invest' ,[InvestmentController::class,"invest"]);
+
+Route::middleware(['auth'])->post('/FileInvestment' ,[InvestmentController::class,"FileInvestment"]);
 
 Route::middleware(['auth'])->get('/save' ,function(){
     return view('investment.save');

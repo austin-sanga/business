@@ -99,6 +99,7 @@ class ProjectManagerController extends Controller
         ]);
 
 
+        // Naming of an upload
         $imageName = time().'_'.$req->project_contract->extension();
 
         // public folder storing
@@ -122,6 +123,7 @@ class ProjectManagerController extends Controller
         $finaldetails = NewProject::find($req->id);
 
         // call on to contributors
+
 
         return redirect("/editfinaldetails/{$req->id}",compact('finaldetails',));
 

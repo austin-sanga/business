@@ -11,24 +11,35 @@
 <div class="bg-white p-3"  style="height:85vh; position: relative;">
 
     <div class="container justify-content-center">
-        <form action="">
+        <form action="/FileInvestment" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="mb-3">
                 <label for="projectid">Fill project id:</label><br>
-                <input type="text" class="rounded"><i class="bi bi-journal-text ms-3" style="font-size: 30px"></i>
+                <div class="row">
+                    <div class="col"{{--  style="width: 260px" --}}>
+                        <select class="form-select" aria-label="Default select example" name="project_id">
+                        <option selected>Select Project</option>
+                        @foreach ($list as $list)
+                          <option value="{{ $list->id }}">{{ $list->name }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="col"><i class="bi bi-journal-text ms-3" style="font-size: 30px"></i></div>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="projectid" class="mb-2">Amount invested:</label><br>
-                <input type="text" class="rounded">
+                <input type="text" class="rounded" name="amount_invested">
             </div>
             <div class="mb-3">
                 <label for="projectid" class="mb-2">Date of deposit:</label><br>
-                <input type="text" class="rounded">
+                <input type="date" class="rounded" name="date_of_deposit">
             </div>
             <div class="mb-3">
                 <label for="projectid" class="mb-2">Proof of deposit:</label><br>
-                <input class="form-control form-control" id="formFileLg" type="file"  style="width: 350px"/>
+                <input class="form-control form-control" id="formFileLg" type="file"  style="width: 350px" name="deposit_upload"/>
             </div>
-            <button class="btn btn-lg btn-success mb-3"  style="position: absolute; bottom:10px; ; ">File withdraw request</button>
+            <button class="btn btn-lg btn-success mb-3"  style="position: absolute; bottom:10px;" type="submit">File withdraw request</button>
 
         </form>
     </div>

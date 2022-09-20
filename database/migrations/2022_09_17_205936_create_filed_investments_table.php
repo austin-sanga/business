@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('amount_invested');
             $table->string('date_of_deposit');
             $table->string('deposit_upload');
-            $table->string('status_id');
+            $table->string('status_id')->default(1);
             $table->timestamps();
         });
     }
