@@ -37,7 +37,7 @@
             </div>
             <div class="mb-3 col-10">
                 <label for="projectid" class="mb-2">Proof of deposit:</label><br>
-                <input class="form-control form-control" id="formFileLg" type="file" name="deposit_upload"/>
+                <input class="form-control " id="formFileLg" type="file" name="deposit_upload"/>
             </div>
             <button class="btn btn-lg btn-success mb-3"  style="position: absolute; bottom:10px;" type="submit">File withdraw request</button>
 

@@ -12,21 +12,27 @@
 
     <div class="container justify-content-center">
         <form action="">
-            <div class="mb-3">
+            <div class="mb-3 col-5">
                 <label for="projectid">Saving bucket id:</label><br>
-                <input type="text" class="rounded"><i class="bi bi-journal-text ms-3" style="font-size: 30px"></i>
+                <div class="row">
+                    <div class="col">
+                <input type="text" class="form-control">
+                    </div>
+                    <div class="col"><i class="bi bi-journal-text ms-3" style="font-size: 30px"></i>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 col-5">
                 <label for="projectid" class="mb-2">Amount deposited:</label><br>
-                <input type="text" class="rounded">
+                <input type="text" class="form-control">
             </div>
-            <div class="mb-3">
+            <div class="mb-3 col-5">
                 <label for="projectid" class="mb-2">Date of deposit:</label><br>
-                <input type="text" class="rounded">
+                <input type="text" class="form-control">
             </div>
-            <div class="mb-3">
+            <div class="mb-3 col-10">
                 <label for="projectid" class="mb-2">Proof of deposit:</label><br>
-                <input class="form-control form-control" id="formFileLg" type="file"  style="width: 350px"/>
+                <input class="form-control" id="formFileLg" type="file"  />
             </div>
             <button class="btn btn-lg btn-success mb-3"  style="position: absolute; bottom:10px; ; ">File Savings</button>
 
