@@ -39,7 +39,7 @@
                 <label for="projectid" class="mb-2">Proof of deposit:</label><br>
                 <input class="form-control " id="formFileLg" type="file" name="deposit_upload"/>
             </div>
-            <button class="btn btn-lg btn-success mb-3"  style="position: absolute; bottom:10px;" type="submit">File withdraw request</button>
+            <button class="btn btn-lg btn-success mb-3"  style="position: absolute; bottom:10px;" type="submit">File Investment</button>
 
         </form>
     </div>
