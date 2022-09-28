@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class InvestmentController extends Controller
 {
-    //Controller for clients
+    // Controller for clients
 
     // call investments with data for tables
     function investment(){
@@ -49,7 +49,8 @@ class InvestmentController extends Controller
         $verify = FiledInvestment::where('filed_investments.id',$id)
             ->join('new_projects','filed_investments.project_id','=','new_projects.id')
             ->join('statuses','filed_investments.status_id','=','statuses.id')
-            ->select('filed_investments.project_id','statuses.status','new_projects.name','date_of_deposit','filed_investments.created_at')
+            ->join('users','filed_investments.user_id','=','users.id')
+            ->select('filed_investments.project_id','statuses.status','new_projects.name','date_of_deposit','filed_investments.created_at','filed_investments.amount_invested','users.id','users.first_name','users.middle_name','users.last_name','new_projects.manager_notice' )
             ->first();
         return view('investment.verificationstatus',compact('verify'));
     }

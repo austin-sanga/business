@@ -33,32 +33,31 @@
         </div>
         <hr>
     </div>
-    <div class="px-3">
+    {{-- <div class="px-3">
         <div class="row ">
         <div class="col"><span>Type of filling</span></div>
         <div class="col  justify-content-end text-end"><span>{{ $verify->date_of_deposit}}</span></div>
         </div>
         <hr>
-    </div>
+    </div> --}}
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Amount deposited</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $verify->date_of_deposit}}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $verify->amount_invested}}/=</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Project manager</span></div>
-        <div class="col  justify-content-end text-end"><span>Mr john john</span></div>{{-- name of the project manager --}}
+        <div class="col  justify-content-end text-end"><span>{{ $verify->id}} {{-- {{ $verify->middle_name}} {{ $verify->last_name}} --}}</span></div>
         </div>
         <hr>
     </div>
     <div class="m-3">
         <div><h5 class="text-muted ">Project manager notice</h5></div>
         <div class="rounded p-2" style="background-color: #F5F5F5 ">
-            <h5>{{-- title --}} Lorem, ipsum dolor.</h5>
-            <p>{{-- paragraph of content --}} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel ducimus quos, vero minima sint culpa dolores eligendi omnis ut iste magnam reiciendis dicta inventore quam aut non. Odit distinctio, debitis cumque alias nulla, sunt sint sed nihil, cum a molestias magni architecto consequatur autem provident quaerat reiciendis rerum. Facere odit magnam est doloremque minima eaque minus dicta deserunt debitis optio?</p>
+            <p>{{ $verify->manager_notice}}</p>
         </div>
     </div>
 
