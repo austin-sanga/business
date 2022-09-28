@@ -60,9 +60,7 @@ Route::middleware(['auth'])->get('/openopportunity' ,function(){
     return view('investment.openopportunity');
 });
 
-Route::middleware(['auth'])->get('/verificationstatus' ,function(){
-    return view('investment.verificationstatus');
-});
+Route::middleware(['auth'])->get('/verificationstatus/{id}' ,[InvestmentController::class,"SpecificVerification"]);
 
 Route::middleware(['auth'])->get('/membership' ,[MembershipController::class,"membership"]);
 
@@ -102,9 +100,7 @@ Route::middleware(['auth'])->get('/viewmoreopenopportunity' ,function(){
     return view('investment.viewmoreopenopportunity');
 });
 
-Route::middleware(['auth'])->get('/viewmorependingverification' ,function(){
-    return view('investment.viewmorependingverification');
-});
+Route::middleware(['auth'])->get('/viewmorependingverification' ,[InvestmentController::class,"viewmoreverification"]);
 
 Route::middleware(['auth'])->get('/maturedinvestment' ,function(){
     return view('investment.maturedinvestment');

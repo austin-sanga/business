@@ -90,17 +90,19 @@
         <caption>Verification Status</caption>
         <thead>
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col" class="text-end">Invested</th>
+            <th scope="col">Project</th>
+            <th scope="col" class="text-end">Status</th>
           </tr>
         </thead>
         <tbody>
+          @foreach ($verify as $verify)
+                    <tr>
+                        <td>{{ $verify->name }}</td>
+                        <td class="text-end">{{ $verify->status }}</td>
+                    </tr>
+                    @endforeach
           <tr>
-            <td>Mark</td>
-            <td class="text-end">Otto</td>
-          </tr>
-          <tr>
-            <td colspan="2" class="text-center"><a href="#viewmore"  style="color: #0B9050" > View more</a></td>
+            <td colspan="2" class="text-center"><a href="viewmorependingverification"  style="color: #0B9050" > View more</a></td>
           </tr>
         </tbody>
       </table>
@@ -139,10 +141,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Mark</td>
-                    <td class="text-end">Otto</td>
-                  </tr>
+                    <tr>
+                        <td>Mark</td>
+                        <td class="text-end">Otto</td>
+                      </tr>
                   <tr>
                     <td colspan="2" class="text-center"><a href="#viewmore" style="color: #0B9050" > View more</a></td>
                   </tr>

@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col">
                         <select class="form-select" aria-label="Default select example" name="project_id">
-                        <option value="">Select Project</option>
+                        <option value="" >Select Project</option>
                         @foreach ($list as $list)
                           <option value="{{ $list->id }}">{{ $list->name }}</option>
                         @endforeach
@@ -32,14 +32,14 @@
             </div>
             <div class="mb-3 col-5">
                 <label for="projectid" class="mb-2">Amount invested:</label><br>
-                <input type="text" class="form-control" name="amount_invested">
+                <input type="text" class="form-control" name="amount_invested" value="{{ old('amount_invested') }}">
                 @error('amount_invested')
                 <div class="error text-danger mt-2">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3 col-5">
                 <label for="projectid" class="mb-2">Date of deposit:</label><br>
-                <input type="date" class="form-control" name="date_of_deposit">
+                <input type="date" class="form-control" name="date_of_deposit" value="{{ old('date_of_deposit') }}">
                 @error('date_of_deposit')
                 <div class="error text-danger mt-2">{{ $message }}</div>
                 @enderror

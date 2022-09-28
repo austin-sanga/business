@@ -17,8 +17,49 @@ class InvestmentController extends Controller
             $published = NewProject::where('status_id','1')->skip(0)->take(3)->get();
             $ongoing  = NewProject::where('status_id','2')->skip(0)->take(3)->get();
             $matured = NewProject::where('status_id','3')->skip(0)->take(3)->get();
-            return view('investment.investments', compact('published','ongoing','matured'));
+
+            // verification status
+            $verify = FiledInvestment::where('filed_investments.user_id',Auth::user()->id)
+            ->where('filed_investments.status_id','1')
+            ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+            ->join('statuses','filed_investments.status_id','=','statuses.id')
+            ->select('new_projects.name','statuses.status')
+            ->skip(0)->take(3)->get();
+
+            return view('investment.investments', compact('published','ongoing','matured','verify'));
     }
+
+
+    // view more open opportunities
+
+    // view more pending verification
+    function viewmoreverification(){
+    $moreverify = FiledInvestment::where('filed_investments.user_id',Auth::user()->id)
+    ->where('filed_investments.status_id','1')
+    ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+    ->join('statuses','filed_investments.status_id','=','statuses.id')
+    ->select('new_projects.id as pid','filed_investments.id as fid','new_projects.name','statuses.status')
+    ->skip(0)->take(3)->get();
+
+    return view('investment.viewmorependingverification',['moreverify'=>$moreverify]);
+    }
+
+    // specific verification
+    function SpecificVerification($id){
+        $verify = FiledInvestment::where('filed_investments.id',$id)
+            ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+            ->join('statuses','filed_investments.status_id','=','statuses.id')
+            ->select('filed_investments.project_id','statuses.status','new_projects.name','date_of_deposit','filed_investments.created_at')
+            ->first();
+        return view('investment.verificationstatus',compact('verify'));
+    }
+
+
+
+    // view more ongoing opportunities
+
+    // view more matured investments
+
 
     // call invest page, passing project ids
     function invest(){
@@ -60,6 +101,7 @@ class InvestmentController extends Controller
 
     }
 
-    // 
+    // verification
+    // call for user specific filed invest with status 1 and user id of logged in
 
 }
