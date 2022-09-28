@@ -18,26 +18,38 @@
                 <div class="row">
                     <div class="col">
                         <select class="form-select" aria-label="Default select example" name="project_id">
-                        <option selected>Select Project</option>
+                        <option value="">Select Project</option>
                         @foreach ($list as $list)
                           <option value="{{ $list->id }}">{{ $list->name }}</option>
                         @endforeach
                       </select>
                     </div>
                     <div class="col"><i class="bi bi-journal-text ms-3" style="font-size: 30px"></i></div>
+                    @error('project_id')
+                <div class="error text-danger mt-2">{{ $message }}</div>
+                @enderror
                 </div>
             </div>
             <div class="mb-3 col-5">
                 <label for="projectid" class="mb-2">Amount invested:</label><br>
                 <input type="text" class="form-control" name="amount_invested">
+                @error('amount_invested')
+                <div class="error text-danger mt-2">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3 col-5">
                 <label for="projectid" class="mb-2">Date of deposit:</label><br>
                 <input type="date" class="form-control" name="date_of_deposit">
+                @error('date_of_deposit')
+                <div class="error text-danger mt-2">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3 col-10">
                 <label for="projectid" class="mb-2">Proof of deposit:</label><br>
                 <input class="form-control " id="formFileLg" type="file" name="deposit_upload"/>
+                @error('deposit_upload')
+                <div class="error text-danger mt-2">{{ $message }}</div>
+                @enderror
             </div>
             <button class="btn btn-lg btn-success mb-3"  style="position: absolute; bottom:10px;" type="submit">File Investment</button>
 
