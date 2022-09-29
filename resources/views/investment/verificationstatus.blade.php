@@ -2,7 +2,11 @@
 
 @section('content')
 
-<h5 class="text-center" style="color:#0B9050 ">Verification status</h5>
+{{-- link towards the previous page --}}
+<div class="row">
+    <div class="col-auto"><a href="{{ url()->previous() }}"><i class="bi bi-arrow-left-short" style="font-size: 40px; color:#0B9050"> </i></a></div>
+    <div class="col"><h5 class="text-center pt-3 me-5" style="color:#0B9050 ">Verification Status</h5></div>
+</div>
 
 <div class="bg-white p-3"  style="height:85vh;">
 
@@ -50,7 +54,7 @@
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Project manager</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $verify->id}} {{-- {{ $verify->middle_name}} {{ $verify->last_name}} --}}</span></div>
+        <div class="col  justify-content-end text-end"><span>#{{ $verify->id}}- {{ $verify->first_name}} {{ $verify->middle_name}} {{ $verify->last_name}}</span></div>
         </div>
         <hr>
     </div>

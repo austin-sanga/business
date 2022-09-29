@@ -52,15 +52,12 @@ Route::middleware(['auth'])->get('/save' ,function(){
     return view('investment.save');
 });
 
-Route::middleware(['auth'])->get('/ongoinginvestment' ,function(){
-    return view('investment.ongoinginvestment');
-});
 
-Route::middleware(['auth'])->get('/openopportunity' ,function(){
-    return view('investment.openopportunity');
-});
+Route::middleware(['auth'])->get('/ongoinginvestment/{id}' ,[InvestmentController::class,"specificOngoing"]);
 
-Route::middleware(['auth'])->get('/verificationstatus/{id}' ,[InvestmentController::class,"SpecificVerification"]);
+Route::middleware(['auth'])->get('/openopportunity/{id}' ,[InvestmentController::class,"specificOpen"]);
+
+Route::middleware(['auth'])->get('/verificationstatus/{id}' ,[InvestmentController::class,"specificVerification"]);
 
 Route::middleware(['auth'])->get('/membership' ,[MembershipController::class,"membership"]);
 
@@ -92,13 +89,9 @@ Route::middleware(['auth'])->post('/storeContract' ,[ProjectManagerController::c
 
 Route::middleware(['auth'])->get('/viewmorematuredinvestment' ,[ProjectManagerController::class,"viewMoreMaturedProject"]);
 
-Route::middleware(['auth'])->get('/viewmoreongoinginvestment' ,function(){
-    return view('investment.viewmoreongoinginvestment');
-});
+Route::middleware(['auth'])->get('/viewmoreongoinginvestment' ,[InvestmentController::class,"viewMoreOngoing"]);
 
-Route::middleware(['auth'])->get('/viewmoreopenopportunity' ,function(){
-    return view('investment.viewmoreopenopportunity');
-});
+Route::middleware(['auth'])->get('/viewmoreopenopportunity' ,[InvestmentController::class,"ViewMoreOpen"]);
 
 Route::middleware(['auth'])->get('/viewmorependingverification' ,[InvestmentController::class,"viewmoreverification"]);
 

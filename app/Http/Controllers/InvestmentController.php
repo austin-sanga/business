@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\NewProject;
 use App\Models\FiledInvestment;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class InvestmentController extends Controller
 {
-    // Controller for clients
+    /*  Controller for clients */
 
     // call investments with data for tables
     function investment(){
@@ -30,26 +31,50 @@ class InvestmentController extends Controller
     }
 
 
+
     // view more open opportunities
+    function ViewMoreOpen(){
+        $moreopen = NewProject::where('status_id','1')->get();
+
+        return view('investment.viewmoreopenopportunity',compact('moreopen'));
+    }
+
+
+    // specifc open opportunity
+    function specificOpen($id){
+        $open = NewProject::where('id',$id)->first();
+
+        $ucount = User::all()->count();
+
+        return view('investment.openopportunity',compact('open','ucount'));
+
+        /*
+        Bado cjafanaya calculation of the remaining amount.
+
+        */
+    }
+
 
     // view more pending verification
     function viewmoreverification(){
-    $moreverify = FiledInvestment::where('filed_investments.user_id',Auth::user()->id)
-    ->where('filed_investments.status_id','1')
-    ->join('new_projects','filed_investments.project_id','=','new_projects.id')
-    ->join('statuses','filed_investments.status_id','=','statuses.id')
-    ->select('new_projects.id as pid','filed_investments.id as fid','new_projects.name','statuses.status')
-    ->skip(0)->take(3)->get();
+        $moreverify = FiledInvestment::where('filed_investments.user_id',Auth::user()->id)
+        ->where('filed_investments.status_id','1')
+        ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+        ->join('statuses','filed_investments.status_id','=','statuses.id')
+        ->select('new_projects.id as pid','filed_investments.id as fid','new_projects.name','statuses.status')
+        ->skip(0)->take(3)->get();
 
-    return view('investment.viewmorependingverification',['moreverify'=>$moreverify]);
+        return view('investment.viewmorependingverification',['moreverify'=>$moreverify]);
     }
 
+
+
     // specific verification
-    function SpecificVerification($id){
+    function specificVerification($id){
         $verify = FiledInvestment::where('filed_investments.id',$id)
             ->join('new_projects','filed_investments.project_id','=','new_projects.id')
             ->join('statuses','filed_investments.status_id','=','statuses.id')
-            ->join('users','filed_investments.user_id','=','users.id')
+            ->join('users','new_projects.user_id','=','users.id')
             ->select('filed_investments.project_id','statuses.status','new_projects.name','date_of_deposit','filed_investments.created_at','filed_investments.amount_invested','users.id','users.first_name','users.middle_name','users.last_name','new_projects.manager_notice' )
             ->first();
         return view('investment.verificationstatus',compact('verify'));
@@ -58,6 +83,20 @@ class InvestmentController extends Controller
 
 
     // view more ongoing opportunities
+    function viewMoreOngoing(){
+        $moreongoing = NewProject::where('status_id','2')->get();
+
+        return view('investment.viewmoreongoinginvestment',compact('moreongoing'));
+    }
+
+
+    // specific ongoing
+    function specificOngoing($id){
+        $ongoing = NewProject::where('id',$id)->first();
+
+        return view('investment.ongoinginvestment',compact('ongoing'));
+
+    }
 
     // view more matured investments
 
@@ -85,7 +124,7 @@ class InvestmentController extends Controller
         // public folder storing
         $req->deposit_upload->move(public_path('FiledInvestment',$depositUpload));
 
-        // Storing to D
+        // Storing to DB
         $filling = new FiledInvestment;
         $filling->user_id = Auth::user()->id;
         $filling->project_id = $req->project_id;

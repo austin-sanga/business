@@ -9,21 +9,21 @@
     <div class="px-3 pt-4">
         <div class="row ">
         <div class="col"><span>Name</span></div>
-        <div class="col  justify-content-end text-end"><span>{{-- name of project --}}project phase 1</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $ongoing->name }}</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Start date</span></div>
-        <div class="col  justify-content-end text-end"><span>{{-- date of start --}}25 july 2020</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $ongoing->start_date }}</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>End date</span></div>
-        <div class="col  justify-content-end text-end"><span>{{-- date of end --}}27 july 2021</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $ongoing->date_of_maturity }}</span></div>
         </div>
         <hr>
     </div>
@@ -31,6 +31,7 @@
         <div class="row ">
         <div class="col"><span>Invested</span></div>
         <div class="col  justify-content-end text-end"><span>{{-- invested amount --}}23,000,000</span></div>
+        {{-- kuna haja ya kutofautisha invested by whole community na invested by individual --}}
         </div>
         <hr>
     </div>
@@ -38,6 +39,7 @@
         <div class="row ">
         <div class="col"><span>Est. ROI</span></div>
         <div class="col  justify-content-end text-end"><span>{{-- amount --}}120,000,000</span></div>
+        {{-- est roi, inatoka baada ya kufanya calculation  --}}
         </div>
         <hr>
     </div>
@@ -55,7 +57,7 @@
             <p>{{-- paragraph of content --}} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel ducimus quos, vero minima sint culpa dolores eligendi omnis ut iste magnam reiciendis dicta inventore quam aut non. Odit distinctio, debitis cumque alias nulla, sunt sint sed nihil, cum a molestias magni architecto consequatur autem provident quaerat reiciendis rerum. Facere odit magnam est doloremque minima eaque minus dicta deserunt debitis optio?</p>
         </div>
     </div>
-  
+
 
 
 </div>

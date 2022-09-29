@@ -22,11 +22,15 @@
 
     {{-- below is the recuression for the matured investments --}}
     <div class="px-3 ">
+        @foreach ($moreongoing as $moreongoing)
+        <a href="ongoinginvestment/{{ $moreongoing->id }}">
         <div class="row ">
-        <div class="col"><span>Name of project</span></div>
-        <div class="col  justify-content-end text-end"><span>540,000,000</span></div>
+        <div class="col"><span>{{ $moreongoing->name }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $moreongoing->budget}}</span></div>
         </div>
+        </a>
         <hr>
+        @endforeach
     </div>
 
 
