@@ -39,7 +39,7 @@
         <div class="row ">
         <div class="col"><span>Est. ROI</span></div>
         <div class="col  justify-content-end text-end"><span>{{-- amount --}}120,000,000</span></div>
-        {{-- est roi, inatoka baada ya kufanya calculation  --}}
+        {{-- est roi, inatoka baada ya kufanya calculation  ((amount contributed/total contributed)*registered ROI)--}}
         </div>
         <hr>
     </div>
@@ -53,8 +53,7 @@
     <div class="m-3">
         <div><h5 class="text-muted ">Project manager notice</h5></div>
         <div class="rounded p-2" style="background-color: #F5F5F5 ">
-            <h5>{{-- title --}} Lorem, ipsum dolor.</h5>
-            <p>{{-- paragraph of content --}} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel ducimus quos, vero minima sint culpa dolores eligendi omnis ut iste magnam reiciendis dicta inventore quam aut non. Odit distinctio, debitis cumque alias nulla, sunt sint sed nihil, cum a molestias magni architecto consequatur autem provident quaerat reiciendis rerum. Facere odit magnam est doloremque minima eaque minus dicta deserunt debitis optio?</p>
+            <p>{{ $ongoing->manager_notice }}</p>
         </div>
     </div>
 
