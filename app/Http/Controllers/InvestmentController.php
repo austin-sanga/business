@@ -119,10 +119,10 @@ class InvestmentController extends Controller
         ]);
 
         // Naming of an upload
-        $depositUpload = time().'_'.$req->deposit_upload->extension();
+        $depositUpload = time().'.'.$req->deposit_upload->extension();
 
         // public folder storing
-        $req->deposit_upload->move(public_path('FiledInvestment',$depositUpload));
+        $req->deposit_upload->move(public_path('FiledInvestment'),$depositUpload);
 
         // Storing to DB
         $filling = new FiledInvestment;

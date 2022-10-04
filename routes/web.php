@@ -16,7 +16,7 @@ use App\Http\Controllers\InvestmentController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
 
 /* routes administered operates in general form,
@@ -109,13 +109,9 @@ Route::middleware(['auth'])->get('/adminongoingproject' ,function(){
 
 Route::middleware(['auth'])->get('/viewmoremanagerongoinginvestment' ,[ProjectManagerController::class,"viewMoreOngoingProject"]);
 
-Route::middleware(['auth'])->get('/investmentverification' ,function(){
-    return view('investment.investmentverification');
-});
+Route::middleware(['auth'])->get('/investmentverification/{id}' ,[ProjectManagerController::class,"specificVerify"]);
 
-Route::middleware(['auth'])->get('/viewmoreverificationqueue' ,function(){
-    return view('investment.viewmoreverificationqueue');
-});
+Route::middleware(['auth'])->get('/viewmoreverificationqueue' ,[ProjectManagerController::class,"viewMoreVerification"]);
 
 Route::middleware(['auth'])->get('/startproject/{id}' ,[ProjectManagerController::class,"startProject"]);
 

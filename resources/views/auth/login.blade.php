@@ -46,7 +46,9 @@
     </label>
     </div>
     <div class="col text-end"><a href="#" style="color: #0B9050">Forgot password?</a>
+
     </div>
+    <span>Have no account? <a href="{{ route('register') }}" style="color: #0B9050">Register yourself</a></span>
   </div>
 
 <div class="text-center">

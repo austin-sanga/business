@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\NewProject;
 use App\Models\FiledInvestment;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectManagerController extends Controller
 {
@@ -15,7 +16,15 @@ class ProjectManagerController extends Controller
         $published = NewProject::where('status_id','1')->skip(0)->take(3)->get();
         $ongoing  = NewProject::where('status_id','2')->skip(0)->take(3)->get();
         $matured = NewProject::where('status_id','3')->skip(0)->take(3)->get();
-        return view('investment.projectmanager', compact('published','ongoing','matured'));
+
+        // verification Queue
+        $verify = FiledInvestment::where('filed_investments.status_id','1')
+        ->where('new_projects.user_id',Auth::user()->id)
+        ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+        ->join('users','filed_investments.user_id','=','users.id')
+        ->get();
+
+        return view('investment.projectmanager', compact('published','ongoing','matured','verify'));
 
     }
 
@@ -38,6 +47,29 @@ class ProjectManagerController extends Controller
     }
 
     // view more verification queue
+    function viewMoreVerification(){
+        $verify = FiledInvestment::where('filed_investments.status_id','1')
+        ->where('new_projects.user_id',Auth::user()->id)
+        ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+        ->join('users','filed_investments.user_id','=','users.id')
+        ->select('filed_investments.id','users.first_name','users.middle_name','users.last_name','filed_investments.amount_invested')
+        ->get();
+
+        return view('investment.viewmoreverificationqueue', compact('verify'));
+
+    }
+
+
+    // specifc verification
+    function specificVerify($id){
+        $verify = FiledInvestment::where('filed_investments.id',$id)
+        ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+        ->join('users','filed_investments.user_id','=','users.id')
+        ->first();
+
+        return view('investment.investmentverification',compact('verify'));
+    }
+
 
 
     // published project view
@@ -104,6 +136,9 @@ class ProjectManagerController extends Controller
 
         // public folder storing
         $req->project_contract->move(public_path('ProjectContracts',$imageName));
+
+        // Srote in storage folder
+        /* $req->project_contract->storeAs('FiledInvestment',$imageName); */
 
 
 

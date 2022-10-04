@@ -68,10 +68,12 @@
           </tr>
         </thead>
         <tbody>
+            @foreach ($verify as $verify)
             <tr>
-                <td>Mark</td>
-                <td class="text-end">Otto</td>
-              </tr>
+                <td>{{ $verify->first_name }} {{ $verify->middle_name }} {{ $verify->last_name }}</td>
+                <td class="text-end">{{ $verify->amount_invested }}/=</td>
+            </tr>
+            @endforeach
           <tr>
             <td colspan="2" class="text-center"><a href="viewmoreverificationqueue"  style="color: #0B9050" > View more</a></td>
           </tr>
