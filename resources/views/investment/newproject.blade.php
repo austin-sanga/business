@@ -53,10 +53,10 @@
         <div class="col"><span>project manager</span></div>
         <div class="col  justify-content-end text-end">
             <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="user_id">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value=""selected>Open this select menu</option>
+                @foreach ($users as $users)
+                <option value="{{ $users->id }}">{{ $users->first_name }} {{ $users->last_name }}</option>
+              @endforeach
               </select>
         </div>
         </div>

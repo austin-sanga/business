@@ -69,9 +69,7 @@ Route::middleware(['auth'])->post('/updateRole' ,[MembershipController::class,"u
 
 Route::middleware(['auth'])->get('/projectmanager' ,[ProjectManagerController::class,"projectManager"]);
 
-Route::middleware(['auth'])->get('/newproject' ,function(){
-    return view('investment.newproject');
-});
+Route::middleware(['auth'])->get('/newproject' ,[ProjectManagerController::class,"newProject"]);
 
 Route::middleware(['auth'])->get('/viewmorepublishedprojects' ,[ProjectManagerController::class,"viewMorePublishedProject"]);
 
@@ -110,6 +108,8 @@ Route::middleware(['auth'])->get('/adminongoingproject' ,function(){
 Route::middleware(['auth'])->get('/viewmoremanagerongoinginvestment' ,[ProjectManagerController::class,"viewMoreOngoingProject"]);
 
 Route::middleware(['auth'])->get('/investmentverification/{id}' ,[ProjectManagerController::class,"specificVerify"]);
+
+Route::middleware(['auth'])->post('/onAccept/{id}' ,[ProjectManagerController::class,"acceptVerify"]);
 
 Route::middleware(['auth'])->get('/viewmoreverificationqueue' ,[ProjectManagerController::class,"viewMoreVerification"]);
 

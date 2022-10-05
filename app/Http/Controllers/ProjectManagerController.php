@@ -5,11 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\NewProject;
 use App\Models\FiledInvestment;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectManagerController extends Controller
 {
+
+    // New project page opening
+    function newProject(){
+        $users = User::all();
+        return view('investment.newproject',compact('users'));
+    }
+
 
     // displaying project manager & its contents
     function projectManager(){
@@ -52,7 +60,7 @@ class ProjectManagerController extends Controller
         ->where('new_projects.user_id',Auth::user()->id)
         ->join('new_projects','filed_investments.project_id','=','new_projects.id')
         ->join('users','filed_investments.user_id','=','users.id')
-        ->select('filed_investments.id','users.first_name','users.middle_name','users.last_name','filed_investments.amount_invested')
+        ->select('filed_investments.id','users.first_name','users.middle_name','users.last_name','filed_investments.amount_invested','filed_investments.deposit_upload')
         ->get();
 
         return view('investment.viewmoreverificationqueue', compact('verify'));
@@ -65,10 +73,25 @@ class ProjectManagerController extends Controller
         $verify = FiledInvestment::where('filed_investments.id',$id)
         ->join('new_projects','filed_investments.project_id','=','new_projects.id')
         ->join('users','filed_investments.user_id','=','users.id')
+        ->select('filed_investments.id','new_projects.name','filed_investments.deposit_upload','filed_investments.date_of_deposit','filed_investments.amount_invested','filed_investments.created_at')
         ->first();
 
         return view('investment.investmentverification',compact('verify'));
     }
+
+
+    // On accept verification
+    function acceptVerify(Request $req){
+        $onAccept = FiledInvestment::find($req->id);
+        $onAccept -> status_id = 2;
+        $onAccept->save();
+
+        return redirect('/viewmoreverificationqueue');
+    }
+
+
+
+    // On decline verification
 
 
 
@@ -135,7 +158,7 @@ class ProjectManagerController extends Controller
         $imageName = time().'_'.$req->project_contract->extension();
 
         // public folder storing
-        $req->project_contract->move(public_path('ProjectContracts',$imageName));
+        $req->project_contract->move(public_path('ProjectContracts'),$imageName);
 
         // Srote in storage folder
         /* $req->project_contract->storeAs('FiledInvestment',$imageName); */

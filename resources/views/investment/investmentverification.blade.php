@@ -56,8 +56,8 @@
     </div>
 
     <div class="row">
-        <div class="col ms-3"><button class="btn btn-danger px-5" type="button">Decline</button></div>
-        <div class="col text-end me-3"><button class="btn btn-success px-5" type="submit">Accept</button></div>
+        <div class="col ms-3"><a href="/onAccept" ><button class="btn btn-danger px-5" type="button">Decline</button></a></div>
+        <div class="col text-end me-3"><form action="/onAccept/{{ $verify->id }}" method="POST">@csrf<button class="btn btn-success px-5" type="submit">Accept</button></form></div>
     </div>
 
 
