@@ -117,7 +117,8 @@ class ProjectManagerController extends Controller
     //passing data on openening editpublishedproject
     function editpublished($id){
        $data = NewProject::find($id);
-       return view('investment.editpublishedproject',['old'=>$data]);
+       $users = User::all();
+       return view('investment.editpublishedproject',['old'=>$data,'users'=>$users]);
     }
 
 
@@ -155,7 +156,7 @@ class ProjectManagerController extends Controller
 
 
         // Naming of an upload
-        $imageName = time().'_'.$req->project_contract->extension();
+        $imageName = time().'.'.$req->project_contract->extension();
 
         // public folder storing
         $req->project_contract->move(public_path('ProjectContracts'),$imageName);
@@ -178,16 +179,27 @@ class ProjectManagerController extends Controller
 
         // passing data toward the edit (final details)
         // top details
-        $finaldetails = NewProject::find($req->id);
+        $finaldetails = NewProject::find($req->id)
+        ->join('users','users.id','=','new_projects.user_id')
+        ->first();
+        $date=now();
 
         // call on to contributors
+        $contributers = FiledInvestment::where('project_id',$req->id)
+        ->join('users','users.id','=','filed_investments.user_id')
+        ->groupBy('user_id')
+        ->selectRaw('sum(amount_invested) as sum, user_id,first_name,middle_name,last_name')
+        ->get();
+
+        $test = $req->id;
 
 
-        return redirect("/editfinaldetails/{$req->id}",compact('finaldetails',));
+        return view("investment.editfinaldetails",compact('finaldetails','date','contributers','test'));
 
     }
 
     // Edit final details page
+
 
 
     //creating project
@@ -211,13 +223,12 @@ class ProjectManagerController extends Controller
 
     // test controller
 function showData(){
-    $test = DB::table('new_projects')
-    ->join('project_statuses','project_statuses.id','=','new_projects.status_id')
-    ->where('new_projects.id',7)
-    ->select('new_projects.name as pname','project_statuses.status')
-    ->first();
+    $test = FiledInvestment::where('project_id',10)
+    ->groupBy('user_id')
+    ->selectRaw('sum(amount_invested) as sum, user_id')
+    ->get(/* 'user_id','sum' */);
 
-    return view('test',['test'=>$test]);
+  return view('test',['test'=>$test]);
  }
 
 

@@ -13,55 +13,57 @@
     <div class="px-3 pt-3">
         <div class="row ">
         <div class="col"><span>Name</span></div>
-        <div class="col  justify-content-end text-end"><span>{{-- name of project --}}project phase 1</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $finaldetails->name }}</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Start Date</span></div>
-        <div class="col  justify-content-end text-end"><span>{{-- date of start --}}25 july 2020</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $date->format('j F,Y') }}</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>est.Duration</span></div>
-        <div class="col  justify-content-end text-end"><span>{{-- duration --}}10 months</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $finaldetails->est_duration }}</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Budget</span></div>
-        <div class="col  justify-content-end text-end"><span>{{-- invested amount --}}23,000,000</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $finaldetails->budget }}</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>est.ROI</span></div>
-        <div class="col  justify-content-end text-end"><span>{{-- amount --}}120,000,000</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $finaldetails->est_roi }}</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Project manager</span></div>
-        <div class="col  justify-content-end text-end"><span>Mr john john</span></div>{{-- name of the project manager --}}
+        <div class="col  justify-content-end text-end"><span>{{ $finaldetails->first_name }} {{ $finaldetails->middle_name }} {{ $finaldetails->last_name }}</span></div>{{-- name of the project manager --}}
         </div>
         <hr>
     </div>
 
-    <div class="ms-3"><span>Contributors</span></div>
+    <div class="ms-3 mb-3"><span>Contributors</span></div>
 
     {{-- recursions on contributors accounts --}}
     <div class="px-3">
+        @foreach ($contributers as $contributers)
         <div class="row ">
-        <div class="col"><span>Project manager</span></div>
-        <div class="col  justify-content-end text-end"><input type="int" class="form-control" id="inputEmail3"></div>
-        </div>
-        <hr>
+            <div class="col"><span>{{ $contributers->first_name }} {{ $contributers->middle_name }} {{ $contributers->last_name }}</span></div>
+            <div class="col  justify-content-end text-end"><span>{{ $contributers->sum }}/=</span></div>
+            </div>
+            <hr>
+        @endforeach
     </div>
 
     <div class="mt-3">
