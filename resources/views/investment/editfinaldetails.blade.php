@@ -12,7 +12,7 @@
 
     <div class="px-3 pt-3">
         <div class="row ">
-        <div class="col"><span>Name</span></div>
+        <div class="col"><span>Name {{ $id }}</span></div>
         <div class="col  justify-content-end text-end"><span>{{ $finaldetails->name }}</span></div>
         </div>
         <hr>
@@ -40,7 +40,7 @@
     </div>
     <div class="px-3">
         <div class="row ">
-        <div class="col"><span>est.ROI</span></div>
+        <div class="col"><span>est.ROI {{ $finaldetails->id }}</span></div>
         <div class="col  justify-content-end text-end"><span>{{ $finaldetails->est_roi }}</span></div>
         </div>
         <hr>
@@ -66,8 +66,11 @@
         @endforeach
     </div>
 
+
     <div class="mt-3">
-        <button class="btn btn-lg btn-success mb-3"  style="position: absolute; bottom:10px; ; ">Confirm start details</button>
+        <form action="/officialstart/{{ $finaldetails->id }}" method="post">
+            <button class="btn btn-lg btn-success mb-3"  style="position: absolute; bottom:10px; ; ">Confirm start details</button>
+        </form>
     </div>
 
 </div>

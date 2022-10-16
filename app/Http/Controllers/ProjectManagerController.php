@@ -169,7 +169,7 @@ class ProjectManagerController extends Controller
         // Storing project_contract in DB
          $project =  NewProject::find($req->id);
          $project->project_contract = $imageName;
-         $project->status_id = 2;
+         /* $project->status_id = 2;   should be done on final confirmation*/
          $saved = $project->save();
 
         //  check if project contract got saved
@@ -177,28 +177,46 @@ class ProjectManagerController extends Controller
             App::abort(500, 'Error');
         }
 
+        return redirect("/editfinaldetails/{$req->id}");
+
+    }
+
+    // Edit final details page
+    function openFinalDetails($id){
         // passing data toward the edit (final details)
         // top details
-        $finaldetails = NewProject::find($req->id)
+        $finaldetails = NewProject::where('new_projects.id',$id)
         ->join('users','users.id','=','new_projects.user_id')
         ->first();
+
+        $id = $id;
+
         $date=now();
 
         // call on to contributors
-        $contributers = FiledInvestment::where('project_id',$req->id)
+        $contributers = FiledInvestment::where('project_id',$id)
         ->join('users','users.id','=','filed_investments.user_id')
         ->groupBy('user_id')
         ->selectRaw('sum(amount_invested) as sum, user_id,first_name,middle_name,last_name')
         ->get();
 
-        $test = $req->id;
-
-
-        return view("investment.editfinaldetails",compact('finaldetails','date','contributers','test'));
-
+        return view("investment.editfinaldetails",compact('finaldetails','date','contributers','id'));
     }
 
-    // Edit final details page
+
+    // confirm start details
+    /*
+        issues on saving the final contract
+
+        detected issue that the project name changes from start project to confirmation of final
+    */
+    function officialStart($id){
+        $final =  NewProject::find($id);
+        $final->status_id = 2;
+        $final->save();
+
+        return redirect('/dashboard');
+    }
 
 
 

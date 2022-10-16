@@ -119,10 +119,9 @@ Route::middleware(['auth'])->get('/viewmoreadminmaturedinvestment' ,function(){
     return view('investment.viewmoreadminmaturedinvestment');
 });
 
-Route::middleware(['auth'])->get('/editfinaldetails' ,function(){
-    return view('investment.editfinaldetails');
-});
+Route::middleware(['auth'])->get('/editfinaldetails/{id}' ,[ProjectManagerController::class,"openFinalDetails"]);
 
+Route::middleware(['auth'])->post('/officialstart/{id}' ,[ProjectManagerController::class,"officialStart"]);
 
 
 // test
