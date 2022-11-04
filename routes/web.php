@@ -97,9 +97,7 @@ Route::middleware(['auth'])->get('/maturedinvestment' ,function(){
     return view('investment.maturedinvestment');
 });
 
-Route::middleware(['auth'])->get('/matureproject' ,function(){
-    return view('investment.matureproject');
-});
+Route::middleware(['auth'])->get('/matureproject/{id}' ,[ProjectManagerController::class,"openMature"]);
 
 Route::middleware(['auth'])->get('/adminongoingproject/{id}' ,[ProjectManagerController::class,"adminOngoing"]);
 

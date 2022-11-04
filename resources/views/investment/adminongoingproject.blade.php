@@ -12,7 +12,7 @@
 
     <div class="px-3 pt-3">
         <div class="row ">
-        <div class="col"><span>Name</span></div>
+        <div class="col"><span>Name {{ $id }}</span></div>
         <div class="col  justify-content-end text-end"><span>{{ $ongoing->projectName }}</span></div>
         </div>
         <hr>
@@ -60,7 +60,7 @@
     </div>
 
     <div class="text-end mt-3">
-        <button class="btn btn-success px-5 me-3">Mature</button>
+        <a href="/matureproject/{{ $id }}"><button class="btn btn-success px-5 me-3">Mature</button></a>
     </div>
 
 </div>

@@ -11,10 +11,10 @@
 <div class="bg-white p-3"  style="height:85vh; position: relative;">
     <div class="mb-4">
         <div><label for="projectname">Project Name:</label></div>
-        <div class="display-6 fw-bold "><span>Mt kuliomn</span></div>
+        <div class="display-6 fw-bold "><span>{{ $project->name }}</span></div>
     </div>
 
-        <form action="">
+        <form action="" method="POST">
     <div class="mb-3">
         <div><label for="ROI">ROI:</label></div>
         <div><input type="text" class="rounded"></div>

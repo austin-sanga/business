@@ -68,10 +68,10 @@ class ProjectManagerController extends Controller
         ->select('new_projects.name as projectName','new_projects.start_date','new_projects.est_duration','new_projects.budget','new_projects.est_roi','new_projects.est_roi','users.first_name as fname','users.middle_name as mname','users.last_name as lname','new_projects.manager_notice','new_projects.id as pid')
         ->first();
 
-        return view('investment.adminongoingproject',compact('ongoing'));
+        $id;
+
+        return view('investment.adminongoingproject',compact('ongoing','id'));
     }
-
-
 
     // view more admin matured projects
     function viewMoreMaturedProject(){
@@ -79,6 +79,12 @@ class ProjectManagerController extends Controller
                     ->where('new_projects.user_id',Auth::user()->id)
                     ->get();
         return view('investment.viewmoreadminmaturedinvestment', ['matured'=>$matured]);
+    }
+
+    // open mature project
+    function openMature($id){
+        $project = NewProject::find($id);
+        return view('investment.matureproject',compact('project'));
     }
 
     // view more verification queue
