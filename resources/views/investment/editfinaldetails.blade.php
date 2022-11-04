@@ -68,9 +68,11 @@
 
 
     <div class="mt-3">
-        <form action="/officialstart/{{ $finaldetails->id }}" method="post">
-            <button class="btn btn-lg btn-success mb-3"  style="position: absolute; bottom:10px; ; ">Confirm start details</button>
-        </form>
+        {{-- <form action="/officialstart/{{ $finaldetails->id }}" method="post"> --}}
+            <a href="/officialstart/{{ $id }}">
+            <button class="btn btn-lg btn-success mb-3"  style="position: absolute; bottom:10px;">Confirm start details</button>
+            </a>
+       {{--  </form> --}}
     </div>
 
 </div>

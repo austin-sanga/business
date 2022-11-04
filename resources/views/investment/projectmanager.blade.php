@@ -64,7 +64,7 @@
         <thead>
           <tr>
             <th scope="col">Name</th>
-            <th scope="col" class="text-end">Invested</th>
+            <th scope="col" class="text-end">Invested {{ $test }}</th>
           </tr>
         </thead>
         <tbody>

@@ -101,9 +101,7 @@ Route::middleware(['auth'])->get('/matureproject' ,function(){
     return view('investment.matureproject');
 });
 
-Route::middleware(['auth'])->get('/adminongoingproject' ,function(){
-    return view('investment.adminongoingproject');
-});
+Route::middleware(['auth'])->get('/adminongoingproject/{id}' ,[ProjectManagerController::class,"adminOngoing"]);
 
 Route::middleware(['auth'])->get('/viewmoremanagerongoinginvestment' ,[ProjectManagerController::class,"viewMoreOngoingProject"]);
 
@@ -121,7 +119,7 @@ Route::middleware(['auth'])->get('/viewmoreadminmaturedinvestment' ,function(){
 
 Route::middleware(['auth'])->get('/editfinaldetails/{id}' ,[ProjectManagerController::class,"openFinalDetails"]);
 
-Route::middleware(['auth'])->post('/officialstart/{id}' ,[ProjectManagerController::class,"officialStart"]);
+Route::middleware(['auth'])->get('/officialstart/{id}' ,[ProjectManagerController::class,"officialStart"]);
 
 
 // test

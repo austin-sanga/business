@@ -21,9 +21,15 @@ class ProjectManagerController extends Controller
 
     // displaying project manager & its contents
     function projectManager(){
-        $published = NewProject::where('status_id','1')->skip(0)->take(3)->get();
-        $ongoing  = NewProject::where('status_id','2')->skip(0)->take(3)->get();
-        $matured = NewProject::where('status_id','3')->skip(0)->take(3)->get();
+        $published = NewProject::where('status_id','1')
+                    ->where('new_projects.user_id',Auth::user()->id)
+                    ->skip(0)->take(3)->get();
+        $ongoing  = NewProject::where('status_id','2')
+                    ->where('new_projects.user_id',Auth::user()->id)
+                    ->skip(0)->take(3)->get();
+        $matured = NewProject::where('status_id','3')
+                    ->where('new_projects.user_id',Auth::user()->id)
+                    ->skip(0)->take(3)->get();
 
         // verification Queue
         $verify = FiledInvestment::where('filed_investments.status_id','1')
@@ -32,25 +38,46 @@ class ProjectManagerController extends Controller
         ->join('users','filed_investments.user_id','=','users.id')
         ->get();
 
-        return view('investment.projectmanager', compact('published','ongoing','matured','verify'));
+        $test = Auth::user()->id;
+
+        return view('investment.projectmanager', compact('published','ongoing','matured','verify','test'));
 
     }
 
     // view more published projects
     function viewMorePublishedProject(){
-        $published = NewProject::where('status_id','1')->get();
+        $published = NewProject::where('status_id','1')
+                    ->where('new_projects.user_id',Auth::user()->id)
+                    ->get();
         return view('investment.viewmorepublishedprojects', ['published'=>$published]);
     }
 
     // view more admin ongoing projects
     function viewMoreOngoingProject(){
-        $ongoing = NewProject::where('status_id','2')->get();
+        $ongoing = NewProject::where('status_id','2')
+                    ->where('new_projects.user_id',Auth::user()->id)
+                    ->get();
         return view('investment.viewmoremanagerongoinginvestment', ['ongoing'=>$ongoing]);
     }
 
+    // Specific ongoing project
+    function adminOngoing($id){
+        $ongoing = DB::table('new_projects')
+        ->join('users','users.id','=','new_projects.user_id')
+        ->where('new_projects.id',$id)
+        ->select('new_projects.name as projectName','new_projects.start_date','new_projects.est_duration','new_projects.budget','new_projects.est_roi','new_projects.est_roi','users.first_name as fname','users.middle_name as mname','users.last_name as lname','new_projects.manager_notice','new_projects.id as pid')
+        ->first();
+
+        return view('investment.adminongoingproject',compact('ongoing'));
+    }
+
+
+
     // view more admin matured projects
     function viewMoreMaturedProject(){
-        $matured = NewProject::where('status_id','3')->get();
+        $matured = NewProject::where('status_id','3')
+                    ->where('new_projects.user_id',Auth::user()->id)
+                    ->get();
         return view('investment.viewmoreadminmaturedinvestment', ['matured'=>$matured]);
     }
 
@@ -161,7 +188,7 @@ class ProjectManagerController extends Controller
         // public folder storing
         $req->project_contract->move(public_path('ProjectContracts'),$imageName);
 
-        // Srote in storage folder
+        // Store in storage folder
         /* $req->project_contract->storeAs('FiledInvestment',$imageName); */
 
 
@@ -205,15 +232,19 @@ class ProjectManagerController extends Controller
 
 
     // confirm start details
-    /*
-        issues on saving the final contract
 
-        detected issue that the project name changes from start project to confirmation of final
-    */
     function officialStart($id){
         $final =  NewProject::find($id);
+
+        $date=now();
+
         $final->status_id = 2;
-        $final->save();
+        $final->start_date = $date;
+        $saved = $final->save();
+
+        if(!$saved){
+            App::abort(500, 'Error');
+        }
 
         return redirect('/dashboard');
     }
