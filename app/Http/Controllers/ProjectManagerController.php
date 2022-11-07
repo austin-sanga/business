@@ -8,6 +8,9 @@ use App\Models\FiledInvestment;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
+
 
 class ProjectManagerController extends Controller
 {
@@ -86,6 +89,41 @@ class ProjectManagerController extends Controller
         $project = NewProject::find($id);
         return view('investment.matureproject',compact('project'));
     }
+
+    // Save maturity Data
+    function maturityDataSave(Request $req){
+        $maturitySave = NewProject::find($req->id);
+        $maturitySave->roi = $req -> roi;
+        $maturitySave -> date_of_maturity = $req -> date_of_maturity;
+        $saved = $maturitySave->save();
+
+        if(!$saved){
+            App::abort(500, 'Error');
+        }
+
+        return redirect("/maturedinvestment/{$req->id}");
+    }
+
+
+    // matured investment
+    function openMatured($id){
+        $maturedData = NewProject::find($id);
+        return view('investment.maturedinvestment',compact('maturedData'));
+    }
+
+    // Making the downlaod function
+    function downlaodContract($project_contract){
+        $contract = public_path()."/ProjectContracts/$project_contract";
+
+        $header = array(
+            'Content-Type: application/pdf',
+            'Content-Type: application/jpeg',
+            'Content-Type: application/png',
+        );
+
+        return response::download($contract, $project_contract, $header);
+    }
+
 
     // view more verification queue
     function viewMoreVerification(){

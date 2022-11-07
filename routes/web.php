@@ -93,11 +93,13 @@ Route::middleware(['auth'])->get('/viewmoreopenopportunity' ,[InvestmentControll
 
 Route::middleware(['auth'])->get('/viewmorependingverification' ,[InvestmentController::class,"viewmoreverification"]);
 
-Route::middleware(['auth'])->get('/maturedinvestment' ,function(){
-    return view('investment.maturedinvestment');
-});
+Route::middleware(['auth'])->get('/contractDownload/{project_contract}' ,[ProjectManagerController::class,"downlaodContract"]);
+
+Route::middleware(['auth'])->get('/maturedinvestment/{id}' ,[ProjectManagerController::class,"openMatured"]);
 
 Route::middleware(['auth'])->get('/matureproject/{id}' ,[ProjectManagerController::class,"openMature"]);
+
+Route::middleware(['auth'])->post('/maturityDataSave' ,[ProjectManagerController::class,"maturityDataSave"]);
 
 Route::middleware(['auth'])->get('/adminongoingproject/{id}' ,[ProjectManagerController::class,"adminOngoing"]);
 

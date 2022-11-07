@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('date_of_maturity')->nullable();
             $table->bigInteger('budget');
             $table->bigInteger('est_roi');
+            $table->bigInteger('roi')->nullable();
             $table->foreignId('user_id')->constrained()->nullable();
             $table->string('manager_notice');
             $table->string('project_contract')->nullable();
