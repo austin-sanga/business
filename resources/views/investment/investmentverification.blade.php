@@ -8,7 +8,7 @@
     <div class="col"><h5 class="text-center pt-3 me-5" style="color:#0B9050 ">Investment verification</h5></div>
 </div>
 
-<div class="bg-white p-3"  style="height:85vh;">
+<div class="bg-white p-3"  style="">
 
     <div class="px-3 pt-4">
         <div class="row ">
