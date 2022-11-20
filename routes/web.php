@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\ProjectManagerController;
 use App\Http\Controllers\InvestmentController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,9 +27,7 @@ Route::middleware(['auth'])->get('/dashboard' ,function(){
     return view('dashboard');
 });
 
-Route::middleware(['auth'])->get('/ministatement' ,function(){
-    return view('investment.ministatement');
-});
+Route::middleware(['auth'])->get('/ministatement/{id}'  ,[DashboardController::class,"viewMiniStatement"]);
 
 Route::middleware(['auth'])->get('/investments' ,[InvestmentController::class,"investment"]);
 

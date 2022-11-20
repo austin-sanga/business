@@ -26,7 +26,7 @@
 
 {{-- second link towards a ministatement --}}
 <div class="{{-- col-md-6  --}}{{-- col-xl-3 --}} mb-4 mx-5">
-    <a href="ministatement" class="text-decoration-none">{{-- link to the mini-statement --}}
+    <a href="/ministatement/{{ Auth::user()->id }}" class="text-decoration-none">{{-- link to the mini-statement --}}
     <div class="card shadow border-start-primary py-2" >
         <div class="card-body">
             <div class="row align-items-center no-gutters">
@@ -46,7 +46,7 @@
 </div>
 
 <div class="text-center gutter-2">
-    <h2 class="text-center">Where will you work today?</h2>
+    <h2 class="text-center">Where will you work today?  {{ Auth::user()->id }}</h2>
 
     {{-- insertion depending on the roles of the users  --}}
     @if (Auth::user()->role==1)
