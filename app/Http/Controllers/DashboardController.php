@@ -11,7 +11,10 @@ class DashboardController extends Controller
     //
 
     // ministatement on general use
-    function viewMiniStatement(){
-        return view('investment.ministatement');
+    function viewMiniStatement($id){
+        $statements = FiledInvestment::where('filed_investments.user_id',$id)
+        ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+        ->get();
+        return view('investment.ministatement', compact('statements'));
     }
 }

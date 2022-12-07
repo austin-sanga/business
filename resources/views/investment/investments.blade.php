@@ -141,12 +141,14 @@
                   </tr>
                 </thead>
                 <tbody>
+                    @foreach ($matured as $matured)
                     <tr>
-                        <td>Mark</td>
-                        <td class="text-end">Otto</td>
-                      </tr>
+                        <td>{{ $matured->name }}</td>
+                        <td class="text-end">/=</td>
+                    </tr>
+                    @endforeach
                   <tr>
-                    <td colspan="2" class="text-center"><a href="#viewmore" style="color: #0B9050" > View more</a></td>
+                    <td colspan="2" class="text-center"><a href="/viewmoreongoinginvestment" style="color: #0B9050" > View more</a></td>
                   </tr>
                 </tbody>
               </table>

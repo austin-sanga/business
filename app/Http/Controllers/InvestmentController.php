@@ -17,7 +17,15 @@ class InvestmentController extends Controller
     function investment(){
             $published = NewProject::where('status_id','1')->skip(0)->take(3)->get();
             $ongoing  = NewProject::where('status_id','2')->skip(0)->take(3)->get();
-            $matured = NewProject::where('status_id','3')->skip(0)->take(3)->get();
+
+            // matured table
+            /* calculation on matured amount and distribution  */
+            $matured = FiledInvestment::distinct(['project_id'])
+            ->where('filed_investments.status_id','3')
+            ->where('filed_investments.user_id',Auth::user()->id)
+            ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+            ->select('new_projects.name')
+            ->skip(0)->take(3)->get();
 
             // verification status
             $verify = FiledInvestment::where('filed_investments.user_id',Auth::user()->id)

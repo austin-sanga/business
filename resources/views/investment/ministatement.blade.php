@@ -6,14 +6,17 @@
 
 <div class="container bg-white">
     {{-- after this is where the loop should be appearing --}}
-    <div class="px-3">
-        <h6>{{-- Date of transaction--}}Tuesday, 19 july 2022</h6>
-        <div class="row ">
-        <div class="col"><span>{{-- the prior word should be depending on the activity --}}Invested  mr kuku</span></div>
-        <div class="col  justify-content-end text-end"><span>{{-- number --}}25,000,000TZS</span></div>
+    @foreach ($statements as $statements)
+        <div class="px-3">
+        <h6>{{ $statements->date_of_deposit }}</h6>
+        <div class="row">
+        <div class="col"><span>Invested on {{ $statements->name }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $statements->amount_invested }} TZS</span></div>
         </div>
         <hr>
     </div>
+    @endforeach
+
 
 </div>
 
