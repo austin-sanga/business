@@ -144,7 +144,7 @@
                     @foreach ($matured as $matured)
                     <tr>
                         <td>{{ $matured->name }}</td>
-                        <td class="text-end">/=</td>
+                        <td class="text-end">{{ $matured->amount_invested }}/=</td>
                     </tr>
                     @endforeach
                   <tr>

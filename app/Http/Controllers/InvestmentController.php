@@ -21,10 +21,10 @@ class InvestmentController extends Controller
             // matured table
             /* calculation on matured amount and distribution  */
             $matured = FiledInvestment::distinct(['project_id'])
-            ->where('filed_investments.status_id','3')
+            ->where('new_projects.status_id','3')
             ->where('filed_investments.user_id',Auth::user()->id)
             ->join('new_projects','filed_investments.project_id','=','new_projects.id')
-            ->select('new_projects.name')
+            ->select('new_projects.name','filed_investments.amount_invested')
             ->skip(0)->take(3)->get();
 
             // verification status
@@ -140,6 +140,12 @@ class InvestmentController extends Controller
         $filling->date_of_deposit = $req->date_of_deposit;
         $filling->deposit_upload = $depositUpload;
         $saved = $filling->save();
+
+        /*
+        call sumary
+        check on user presence based on id
+        if present
+         */
 
         //  check if investment filed
         if(!$saved){
