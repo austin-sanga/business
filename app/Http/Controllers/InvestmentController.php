@@ -52,7 +52,9 @@ class InvestmentController extends Controller
 
     // specifc open opportunity
     function specificOpen($id){
-        $open = NewProject::where('id',$id)->first();
+        $open = NewProject::where('new_projects.id',$id)
+        ->join('users','users.id','=','new_projects.user_id')
+        ->first();
 
         $ucount = User::all()->count();
 
