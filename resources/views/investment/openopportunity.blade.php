@@ -38,7 +38,7 @@
         </div>
         <div class="row text-muted">
             <div class="col"><span>Remaining</span></div>
-            <div class="col  justify-content-end text-end"><span>{{-- amount --}}120,000,000</span></div>
+            <div class="col  justify-content-end text-end"><span>{{$remaining}}</span></div>
         </div>
         <hr>
     </div>

@@ -19,13 +19,15 @@ class InvestmentController extends Controller
             $ongoing  = NewProject::where('status_id','2')->skip(0)->take(3)->get();
 
             // matured table
-            /* calculation on matured amount and distribution  */
-            $matured = FiledInvestment::distinct(['project_id'])
-            ->where('new_projects.status_id','3')
+            $matured = FiledInvestment::groupBy('project_id')
             ->where('filed_investments.user_id',Auth::user()->id)
+            ->where('new_projects.status_id','3')
+            ->select(\DB::raw("SUM(`amount_invested`) AS `quantity_sum`"), 'name')
             ->join('new_projects','filed_investments.project_id','=','new_projects.id')
-            ->select('new_projects.name','filed_investments.amount_invested')
             ->skip(0)->take(3)->get();
+
+
+
 
             // verification status
             $verify = FiledInvestment::where('filed_investments.user_id',Auth::user()->id)
@@ -54,12 +56,16 @@ class InvestmentController extends Controller
 
         $ucount = User::all()->count();
 
-        return view('investment.openopportunity',compact('open','ucount'));
+        $sumSpecific = FiledInvestment::where('project_id',$id)
+        ->where('new_projects.status_id','1')
+        ->select(\DB::raw("SUM(`amount_invested`) AS `quantity_sum`"))
+        ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+        ->first();
 
-        /*
-        Bado cjafanaya calculation of the remaining amount.
 
-        */
+        $remaining =(($open->budget)-($sumSpecific->quantity_sum) );
+
+        return view('investment.openopportunity',compact('open','ucount','remaining'));
     }
 
 
