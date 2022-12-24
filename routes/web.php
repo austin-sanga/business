@@ -84,7 +84,9 @@ Route::middleware(['auth'])->post('/updateEdit' ,[ProjectManagerController::clas
 
 Route::middleware(['auth'])->post('/storeContract' ,[ProjectManagerController::class,"storeContract"]);
 
-Route::middleware(['auth'])->get('/viewmorematuredinvestment' ,[ProjectManagerController::class,"viewMoreMaturedProject"]);
+Route::middleware(['auth'])->get('/viewmoreadminmaturedinvestment' ,[ProjectManagerController::class,"viewMoreAdminMaturedProject"]);
+
+Route::middleware(['auth'])->get('/viewmorematuredinvestment' ,[InvestmentController::class,"viewMoreMaturedProject"]);
 
 Route::middleware(['auth'])->get('/viewmoreongoinginvestment' ,[InvestmentController::class,"viewMoreOngoing"]);
 
@@ -111,10 +113,6 @@ Route::middleware(['auth'])->post('/onAccept/{id}' ,[ProjectManagerController::c
 Route::middleware(['auth'])->get('/viewmoreverificationqueue' ,[ProjectManagerController::class,"viewMoreVerification"]);
 
 Route::middleware(['auth'])->get('/startproject/{id}' ,[ProjectManagerController::class,"startProject"]);
-
-Route::middleware(['auth'])->get('/viewmoreadminmaturedinvestment' ,function(){
-    return view('investment.viewmoreadminmaturedinvestment');
-});
 
 Route::middleware(['auth'])->get('/editfinaldetails/{id}' ,[ProjectManagerController::class,"openFinalDetails"]);
 

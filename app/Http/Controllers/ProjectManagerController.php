@@ -77,7 +77,7 @@ class ProjectManagerController extends Controller
     }
 
     // view more admin matured projects
-    function viewMoreMaturedProject(){
+    function viewMoreAdminMaturedProject(){
         $matured = NewProject::where('status_id','3')
                     ->where('new_projects.user_id',Auth::user()->id)
                     ->get();

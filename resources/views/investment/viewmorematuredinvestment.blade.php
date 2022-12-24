@@ -21,12 +21,17 @@
     </div>
 
     {{-- below is the recuression for the matured investments --}}
+    {{-- below is the recuression for the matured investments --}}
     <div class="px-3 ">
+        @foreach ($matured as $matured)
+        <a href="ongoinginvestment/{{ $matured->id }}">
         <div class="row ">
-        <div class="col"><span>Name of project</span></div>
-        <div class="col  justify-content-end text-end"><span>540,000,000</span></div>
+        <div class="col"><span>{{ $matured->name }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $matured->amount_invested}}</span></div>
         </div>
+        </a>
         <hr>
+        @endforeach
     </div>
 
 

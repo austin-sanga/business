@@ -121,7 +121,7 @@
                 </tr>
                      @endforeach
                   <tr>
-                    <td colspan="2" class="text-center"><a href="viewmorematuredinvestment" style="color: #0B9050" > View more</a></td>
+                    <td colspan="2" class="text-center"><a href="viewmoreadminmaturedinvestment" style="color: #0B9050" > View more</a></td>
                   </tr>
                 </tbody>
               </table>

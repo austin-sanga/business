@@ -116,6 +116,22 @@ class InvestmentController extends Controller
 
     // view more matured investments
 
+    function viewMoreMaturedProject(){
+            $matured = FiledInvestment::groupBy('project_id')
+            ->where('filed_investments.user_id',Auth::user()->id)
+            ->where('new_projects.status_id','3')
+            ->select(\DB::raw("SUM(`amount_invested`) AS `amount_invested`"), 'name')
+            ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+            ->get();
+
+            dd($matured);
+                return view('investment.viewmorematuredinvestment', ['matured'=>$matured]);
+
+
+
+     }
+
+
 
     // call invest page, passing project ids
     function invest(){
