@@ -24,7 +24,7 @@ class CreateNewUser implements CreatesNewUsers
             'first_name' => ['required', 'string', 'max:255'],
             'middle_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'nida' => ['required', 'string', 'max:255'],
+            'nida' => ['required', 'integer', 'max:255'],
             'phone_number' => ['required', 'string', 'max:255'],
             /* 'second_phone_number' => ['string', 'max:255'], */
             'gender' => ['int'],

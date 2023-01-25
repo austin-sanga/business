@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
-            $table->string('nida');
+            $table->bigInteger('nida')->length(10);
             $table->string('gender');
             $table->string('phone_number');
             $table->string('second_phone_number')->nullable();

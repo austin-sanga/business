@@ -19,12 +19,24 @@ class InvestmentController extends Controller
             $ongoing  = NewProject::where('status_id','2')->skip(0)->take(3)->get();
 
             // matured table
+            /*
+            Original code
+
             $matured = FiledInvestment::groupBy('project_id')
             ->where('filed_investments.user_id',Auth::user()->id)
             ->where('new_projects.status_id','3')
             ->select(\DB::raw("SUM(`amount_invested`) AS `quantity_sum`"), 'name')
             ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+            ->skip(0)->take(3)->get(); */
+
+            // chatgpt correction
+            $matured = FiledInvestment::select(\DB::raw("SUM(`amount_invested`) AS `quantity_sum`"), 'new_projects.name')
+            ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+            ->where('filed_investments.user_id',Auth::user()->id)
+            ->where('new_projects.status_id','3')
+            ->groupBy('new_projects.name')
             ->skip(0)->take(3)->get();
+
 
 
 
@@ -156,7 +168,7 @@ class InvestmentController extends Controller
         // public folder storing
         $req->deposit_upload->move(public_path('FiledInvestment'),$depositUpload);
 
-        // Storing to DB
+        // Storing to\DB
         $filling = new FiledInvestment;
         $filling->user_id = Auth::user()->id;
         $filling->project_id = $req->project_id;
