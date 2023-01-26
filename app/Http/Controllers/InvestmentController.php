@@ -83,10 +83,10 @@ class InvestmentController extends Controller
     }
 
 
-    // view more pending verification
+    // view more verification status
     function viewmoreverification(){
         $moreverify = FiledInvestment::where('filed_investments.user_id',Auth::user()->id)
-        ->where('filed_investments.status_id','1')
+        /* ->where('filed_investments.status_id','1')  */  //commented so as to allow user to view all the statuses
         ->join('new_projects','filed_investments.project_id','=','new_projects.id')
         ->join('statuses','filed_investments.status_id','=','statuses.id')
         ->select('new_projects.id as pid','filed_investments.id as fid','new_projects.name','statuses.status')
