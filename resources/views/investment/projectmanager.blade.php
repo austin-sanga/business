@@ -4,8 +4,8 @@
 
 {{-- link towards the previous page --}}
 <div class="row">
-    <div class="col-auto"><a href="{{ url()->previous() }}"><i class="bi bi-arrow-left-short" style="font-size: 40px; color:#0B9050"> </i></a></div>
-    <div class="col"><h5 class="text-center pt-3 me-5" style="color:#0B9050 ">Investments</h5></div>
+    <div class="col-auto"><a href="/dashboard"><i class="bi bi-arrow-left-short" style="font-size: 40px; color:#0B9050"> </i></a></div>
+    <div class="col"><h5 class="text-center pt-3 me-5" style="color:#0B9050 ">Project Manager</h5></div>
 </div>
 
 @if (session('status'))

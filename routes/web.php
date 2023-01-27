@@ -27,9 +27,6 @@ Route::middleware(['auth'])->get('/dashboard' ,function(){
     return view('dashboard');
 });
 
-Route::middleware(['auth'])->get('/ministatement/{id}'  ,[DashboardController::class,"viewMiniStatement"]);
-
-Route::middleware(['auth'])->get('/investments' ,[InvestmentController::class,"investment"]);
 
 Route::middleware(['auth'])->get('/loans' ,function(){
     return view('loans.loans');
@@ -43,84 +40,76 @@ Route::middleware(['auth'])->get('/withdraw' ,function(){
     return view('investment.withdraw');
 });
 
-Route::middleware(['auth'])->get('/invest' ,[InvestmentController::class,"invest"]);
-
-Route::middleware(['auth'])->post('/FileInvestment' ,[InvestmentController::class,"FileInvestment"]);
 
 Route::middleware(['auth'])->get('/save' ,function(){
     return view('investment.save');
 });
 
+//  all auth requiring routes
+Route::middleware(['auth'])->group(function() {
 
-Route::middleware(['auth'])->get('/ongoinginvestment/{id}' ,[InvestmentController::class,"specificOngoing"]);
-
-Route::middleware(['auth'])->get('/openopportunity/{id}' ,[InvestmentController::class,"specificOpen"]);
-
-Route::middleware(['auth'])->get('/verificationstatus/{id}' ,[InvestmentController::class,"specificVerification"]);
-
-Route::middleware(['auth'])->get('/membership' ,[MembershipController::class,"membership"]);
-
-Route::middleware(['auth'])->get('/userrequests' ,[MembershipController::class,"listrole0"]);
-
-Route::middleware(['auth'])->get('/specificrequest/{id}' ,[MembershipController::class,"specificrequest"]);
-
-Route::middleware(['auth'])->post('/updateRole' ,[MembershipController::class,"updateRole"]);/* comment out the middleware if doesnt work */
-
-Route::middleware(['auth'])->get('/projectmanager' ,[ProjectManagerController::class,"projectManager"]);
-
-Route::middleware(['auth'])->get('/newproject' ,[ProjectManagerController::class,"newProject"]);
-
-Route::middleware(['auth'])->get('/viewmorepublishedprojects' ,[ProjectManagerController::class,"viewMorePublishedProject"]);
-
-Route::middleware(['auth'])->post('/createProject' ,[ProjectManagerController::class,"createProject"]);
-
-Route::middleware(['auth'])->get('/publishedproject/{id}' ,[ProjectManagerController::class,"publishedProject"]);
-
-Route::middleware(['auth'])->get('/deletepublished/{id}' ,[ProjectManagerController::class,"deletePublished"]);
-
-Route::middleware(['auth'])->get('/editpublishedproject/{id}' ,[ProjectManagerController::class,"editpublished"]);
-
-Route::middleware(['auth'])->post('/updateEdit' ,[ProjectManagerController::class,"editUpdate"]);
-
-Route::middleware(['auth'])->post('/storeContract' ,[ProjectManagerController::class,"storeContract"]);
-
-Route::middleware(['auth'])->get('/viewmoreadminmaturedinvestment' ,[ProjectManagerController::class,"viewMoreAdminMaturedProject"]);
-
-Route::middleware(['auth'])->get('/viewmorematuredinvestment' ,[InvestmentController::class,"viewMoreMaturedProject"]);
-
-Route::middleware(['auth'])->get('/viewmoreongoinginvestment' ,[InvestmentController::class,"viewMoreOngoing"]);
-
-Route::middleware(['auth'])->get('/viewmoreopenopportunity' ,[InvestmentController::class,"ViewMoreOpen"]);
-
-Route::middleware(['auth'])->get('/viewmorependingverification' ,[InvestmentController::class,"viewmoreverification"]);
-
-Route::middleware(['auth'])->get('/contractDownload/{project_contract}' ,[ProjectManagerController::class,"downlaodContract"]);
-
-Route::middleware(['auth'])->get('/maturedinvestment/{id}' ,[ProjectManagerController::class,"openMatured"]);
-
-Route::middleware(['auth'])->get('/matureproject/{id}' ,[ProjectManagerController::class,"openMature"]);
-
-Route::middleware(['auth'])->post('/maturityDataSave' ,[ProjectManagerController::class,"maturityDataSave"]);
-
-Route::middleware(['auth'])->get('/adminongoingproject/{id}' ,[ProjectManagerController::class,"adminOngoing"]);
-
-Route::middleware(['auth'])->get('/viewmoremanagerongoinginvestment' ,[ProjectManagerController::class,"viewMoreOngoingProject"]);
-
-Route::middleware(['auth'])->get('/investmentverification/{id}' ,[ProjectManagerController::class,"specificVerify"]);
-
-Route::middleware(['auth'])->post('/onAccept/{id}' ,[ProjectManagerController::class,"acceptVerify"]);
-
-Route::middleware(['auth'])->get('/viewmoreverificationqueue' ,[ProjectManagerController::class,"viewMoreVerification"]);
-
-Route::middleware(['auth'])->get('/startproject/{id}' ,[ProjectManagerController::class,"startProject"]);
-
-Route::middleware(['auth'])->get('/editfinaldetails/{id}' ,[ProjectManagerController::class,"openFinalDetails"]);
-
-Route::middleware(['auth'])->get('/officialstart/{id}' ,[ProjectManagerController::class,"officialStart"]);
+    // DashboardController
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('/ministatement/{id}' ,"viewMiniStatement");
+    });
 
 
-// test
-Route::get('/test' ,[ProjectManagerController::class,"showData"]);
+    // MembershipController
+    Route::controller(MembershipController::class)->group(function () {
+        Route::get('/membership' ,"membership");
+        Route::get('/userrequests' ,"listrole0");
+        Route::get('/specificrequest/{id}' ,"specificrequest");
+        Route::post('/updateRole' ,"updateRole"); /* comment out from the middleware if doesn't work */
+    });
+
+
+    // InvestmentController
+    Route::controller(InvestmentController::class)->group(function () {
+        Route::get('/ongoinginvestment/{id}', 'specificOngoing');
+        Route::get('/openopportunity/{id}', 'specificOpen');
+        Route::get('/verificationstatus/{id}' ,"specificVerification");
+        Route::get('/viewmorematuredinvestment' ,"viewMoreMaturedProject");
+        Route::get('/viewmoreongoinginvestment' ,"viewMoreOngoing");
+        Route::get('/viewmoreopenopportunity' ,"ViewMoreOpen");
+        Route::get('/viewmorependingverification' ,"viewmoreverification");
+        Route::get('/invest' ,"invest");
+        Route::post('/FileInvestment' ,"FileInvestment");
+        Route::get('/investments' ,"investment");
+    });
+
+
+    // ProjectManagerController
+    Route::controller(ProjectManagerController::class)->group(function () {
+        Route::get('/projectmanager' ,"projectManager");
+        Route::get('/newproject' ,"newProject");
+        Route::get('/viewmorepublishedprojects' ,"viewMorePublishedProject");
+        Route::post('/createProject' ,"createProject");
+        Route::get('/publishedproject/{id}' ,"publishedProject");
+        Route::get('/deletepublished/{id}' ,"deletePublished");
+        Route::get('/editpublishedproject/{id}' ,"editpublished");
+        Route::post('/updateEdit' ,"editUpdate");
+        Route::post('/storeContract' ,"storeContract");
+        Route::get('/viewmoreadminmaturedinvestment' ,"viewMoreAdminMaturedProject");
+        Route::get('/contractDownload/{project_contract}' ,"downlaodContract");
+        Route::get('/maturedinvestment/{id}' ,"openMatured");
+        Route::get('/matureproject/{id}' ,"openMature");
+        Route::post('/maturityDataSave' ,"maturityDataSave");
+        Route::get('/adminongoingproject/{id}' ,"adminOngoing");
+        Route::get('/viewmoremanagerongoinginvestment' ,"viewMoreOngoingProject");
+        Route::get('/investmentverification/{id}' ,"specificVerify");
+        Route::post('/onAccept/{id}' ,"acceptVerify");
+        Route::get('/viewmoreverificationqueue' ,"viewMoreVerification");
+        Route::get('/startproject/{id}' ,"startProject");
+        Route::get('/editfinaldetails/{id}' ,"openFinalDetails");
+        Route::get('/officialstart/{id}' ,"officialStart");
+
+        // test
+        Route::get('/test' ,"showData");
+    });
+
+});
+
+
 
 
 
