@@ -48,7 +48,7 @@
         @foreach ($published as $published)
         <tr>
             <td>{{ $published->name }}</td>
-            <td class="text-end">{{ $published->budget }}/=</td>
+            <td class="text-end">{{ $formatted_money($published->budget) }}</td>
         </tr>
         @endforeach
       <tr>
@@ -71,7 +71,7 @@
             @foreach ($verify as $verify)
             <tr>
                 <td>{{ $verify->first_name }} {{ $verify->middle_name }} {{ $verify->last_name }}</td>
-                <td class="text-end">{{ $verify->amount_invested }}/=</td>
+                <td class="text-end">{{ $formatted_money($verify->amount_invested) }}</td>
             </tr>
             @endforeach
           <tr>
@@ -94,7 +94,7 @@
               @foreach ($ongoing as $ongoing)
             <tr>
                 <td>{{ $ongoing->name }}</td>
-                <td class="text-end">{{ $ongoing->budget }}/=</td>
+                <td class="text-end">{{ $formatted_money($ongoing->budget) }}</td>
             </tr>
             @endforeach
               <tr>
@@ -117,7 +117,7 @@
                     @foreach ($matured as $matured)
                 <tr>
                 <td>{{ $matured->name }}</td>
-                <td class="text-end">{{ $matured->budget }}/=</td>
+                <td class="text-end">{{ $formatted_money($matured->budget) }}</td>
                 </tr>
                      @endforeach
                   <tr>

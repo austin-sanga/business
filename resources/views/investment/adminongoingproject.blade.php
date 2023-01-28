@@ -34,14 +34,14 @@
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Budget</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $ongoing->budget }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $formatted_money( $ongoing->budget) }}</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>est.ROI</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $ongoing->est_roi }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($ongoing->est_roi) }}</span></div>
         </div>
         <hr>
     </div>

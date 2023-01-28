@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -20,7 +21,7 @@ return new class extends Migration
 
         // status
         DB::table('statuses')->insert(
-            [['status'=>'pending'],['status'=>'verified']]
+            [['status'=>'pending'],['status'=>'verified'],['status'=>'declined']]
         );
     }
 

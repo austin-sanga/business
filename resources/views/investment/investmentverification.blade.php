@@ -41,7 +41,7 @@
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Amount invested</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $verify->amount_invested }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($verify->amount_invested) }}</span></div>
         </div>
         <hr>
     </div>
@@ -56,7 +56,7 @@
     </div>
 
     <div class="row">
-        <div class="col ms-3"><a href="/onAccept" ><button class="btn btn-danger px-5" type="button">Decline</button></a></div>
+        <div class="col ms-3"><form action="/onDecline/{{ $verify->id }}" method="POST">@csrf<button class="btn btn-danger px-5" type="submit">Decline</button></form></div>
         <div class="col text-end me-3"><form action="/onAccept/{{ $verify->id }}" method="POST">@csrf<button class="btn btn-success px-5" type="submit">Accept</button></form></div>
     </div>
 

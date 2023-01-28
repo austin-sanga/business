@@ -26,7 +26,7 @@
         <a href="openopportunity/{{ $moreopen->id }}">
         <div class="row ">
         <div class="col"><span>{{ $moreopen->name }}</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $moreopen->budget}}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($moreopen->budget)}}</span></div>
         </div>
         </a>
         <hr>

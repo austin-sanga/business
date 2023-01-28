@@ -182,6 +182,11 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
+        /* money format composer */
+        App\Providers\MoneyFormatComposer::class,
+
+
         /*
          * Package Service Providers...
          */

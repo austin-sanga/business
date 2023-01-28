@@ -34,14 +34,14 @@
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Budget</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $finaldetails->budget }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($finaldetails->budget) }}</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>est.ROI {{ $finaldetails->id }}</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $finaldetails->est_roi }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($finaldetails->est_roi) }}</span></div>
         </div>
         <hr>
     </div>
@@ -60,7 +60,7 @@
         @foreach ($contributers as $contributers)
         <div class="row ">
             <div class="col"><span>{{ $contributers->first_name }} {{ $contributers->middle_name }} {{ $contributers->last_name }}</span></div>
-            <div class="col  justify-content-end text-end"><span>{{ $contributers->sum }}/=</span></div>
+            <div class="col  justify-content-end text-end"><span>{{ $formatted_money($contributers->sum) }}/=</span></div>
             </div>
             <hr>
         @endforeach

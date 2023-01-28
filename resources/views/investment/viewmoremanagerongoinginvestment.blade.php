@@ -26,7 +26,7 @@
         <a href="adminongoingproject/{{ $ongoing->id }}">
         <div class="row ">
         <div class="col"><span>{{ $ongoing->name }}</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $ongoing->budget }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($ongoing->budget) }}</span></div>
         </div>
         </a>
         <hr>

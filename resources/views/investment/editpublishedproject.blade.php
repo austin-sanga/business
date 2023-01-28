@@ -38,14 +38,14 @@
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Budget</span></div>
-        <div class="col  justify-content-end text-end"><input type="text" class="form-control" id="inputEmail3" name="budget" value="{{ $old->budget }}"></div>
+        <div class="col  justify-content-end text-end"><input type="text" class="form-control" id="inputEmail3" name="budget" value="{{ $formatted_money($old->budget )}}"></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Est. ROI</span></div>
-        <div class="col  justify-content-end text-end"><input type="text" class="form-control" id="inputEmail3" name="est_roi" value="{{ $old->est_roi }}"></div>
+        <div class="col  justify-content-end text-end"><input type="text" class="form-control" id="inputEmail3" name="est_roi" value="{{ $formatted_money($old->est_roi) }}"></div>
         </div>
         <hr>
     </div>

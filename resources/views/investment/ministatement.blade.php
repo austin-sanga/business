@@ -16,7 +16,7 @@
         <h6>{{ $statements->date_of_deposit }}</h6>
         <div class="row">
         <div class="col"><span>Invested on {{ $statements->name }}</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $statements->amount_invested }} TZS</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($statements->amount_invested) }} </span></div>
         </div>
         <hr>
     </div>

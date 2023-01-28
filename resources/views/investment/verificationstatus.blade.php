@@ -47,7 +47,7 @@
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Amount deposited</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $verify->amount_invested}}/=</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $formatted_money( $verify->amount_invested) }}</span></div>
         </div>
         <hr>
     </div>

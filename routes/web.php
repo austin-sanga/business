@@ -98,6 +98,7 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/viewmoremanagerongoinginvestment' ,"viewMoreOngoingProject");
         Route::get('/investmentverification/{id}' ,"specificVerify");
         Route::post('/onAccept/{id}' ,"acceptVerify");
+        Route::post('/onDecline/{id}' ,"declineVerify");
         Route::get('/viewmoreverificationqueue' ,"viewMoreVerification");
         Route::get('/startproject/{id}' ,"startProject");
         Route::get('/editfinaldetails/{id}' ,"openFinalDetails");

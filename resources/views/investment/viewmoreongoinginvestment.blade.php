@@ -26,7 +26,7 @@
         <a href="ongoinginvestment/{{ $moreongoing->id }}">
         <div class="row ">
         <div class="col"><span>{{ $moreongoing->name }}</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $moreongoing->budget}}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($moreongoing->budget)}}</span></div>
         </div>
         </a>
         <hr>

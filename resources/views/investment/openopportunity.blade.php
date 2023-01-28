@@ -34,22 +34,22 @@
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Budget</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $open->budget}}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($open->budget)}}</span></div>
         </div>
         <div class="row text-muted">
             <div class="col"><span>aprox Per person</span></div>
-            <div class="col  justify-content-end text-end"><span>{{ $open->budget/$ucount}} </span></div>
+            <div class="col  justify-content-end text-end"><span>{{ $formatted_money($open->budget/$ucount)}} </span></div>
         </div>
         <div class="row text-muted">
             <div class="col"><span>Remaining</span></div>
-            <div class="col  justify-content-end text-end"><span>{{$remaining}}</span></div>
+            <div class="col  justify-content-end text-end"><span>{{$formatted_money($remaining)}}</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Est. ROI</span></div>
-        <div class="col  justify-content-end text-end"><span>{{$open->est_roi}}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{$formatted_money($open->est_roi)}}</span></div>
         </div>
         <hr>
     </div>

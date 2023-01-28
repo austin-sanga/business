@@ -26,7 +26,7 @@
         <a href="publishedproject/{{ $matured->id }}">
         <div class="row ">
         <div class="col"><span>{{ $matured->name }}</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $matured->budget }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($matured->budget) }}</span></div>
         </div>
         </a>
         <hr>

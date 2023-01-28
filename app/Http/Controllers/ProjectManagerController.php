@@ -163,6 +163,13 @@ class ProjectManagerController extends Controller
 
 
     // On decline verification
+    function declineVerify(Request $req){
+        $onDecline = FiledInvestment::find($req->id);
+        $onDecline -> status_id = 3;
+        $onDecline->save();
+
+        return redirect('/viewmoreverificationqueue');
+    }
 
 
 
@@ -315,14 +322,14 @@ class ProjectManagerController extends Controller
     }
 
     // test controller
-function showData(){
-    $test = FiledInvestment::where('project_id',10)
-    ->groupBy('user_id')
-    ->selectRaw('sum(amount_invested) as sum, user_id')
-    ->get(/* 'user_id','sum' */);
+    function showData(){
+        $test = FiledInvestment::where('project_id',10)
+        ->groupBy('user_id')
+        ->selectRaw('sum(amount_invested) as sum, user_id')
+        ->get(/* 'user_id','sum' */);
 
-  return view('test',['test'=>$test]);
- }
+        return view('test',['test'=>$test]);
+    }
 
 
 }

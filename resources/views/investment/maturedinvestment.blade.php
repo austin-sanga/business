@@ -34,14 +34,14 @@
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Invested</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $maturedData->budget }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($maturedData->budget) }}</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>ROI</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $maturedData->roi }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($maturedData->roi )}}</span></div>
         </div>
         <hr>
     </div>
