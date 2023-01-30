@@ -71,7 +71,7 @@
             @foreach ($verify as $verify)
             <tr>
                 <td>{{ $verify->first_name }} {{ $verify->middle_name }} {{ $verify->last_name }}</td>
-                <td class="text-end">{{ $formatted_money($verify->amount_invested) }}</td>
+                <td class="text-end">{{$verify->status}}</td>
             </tr>
             @endforeach
           <tr>

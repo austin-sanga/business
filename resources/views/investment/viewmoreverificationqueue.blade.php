@@ -26,7 +26,7 @@
         <a href="investmentverification/{{ $verify->id }}" class="text-decoration-none text-black">
         <div class="row ">
         <div class="col"><span>{{ $verify->first_name }} {{ $verify->middle_name }} {{ $verify->last_name }}</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($verify->amount_invested) }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $verify->status }}</span></div>
         </div>
         </a>
         <hr>

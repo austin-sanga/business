@@ -13,14 +13,14 @@
     <div class="px-3 pt-4">
         <div class="row ">
         <div class="col"><span>Name</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $verify->name }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $verify->first_name }} {{ $verify->middle_name }} {{ $verify->last_name }}</span></div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Projected invested</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $verify->deposit_upload }}</span></div>
+        <div class="col  justify-content-end text-end"><span>{{ $verify->name }}</span></div>
         </div>
         <hr>
     </div>

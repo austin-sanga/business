@@ -69,6 +69,7 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/openopportunity/{id}', 'specificOpen');
         Route::get('/verificationstatus/{id}' ,"specificVerification");
         Route::get('/viewmorematuredinvestment' ,"viewMoreMaturedProject");
+        Route::get('/maturedinvestment/{id}' ,"specificMatured");
         Route::get('/viewmoreongoinginvestment' ,"viewMoreOngoing");
         Route::get('/viewmoreopenopportunity' ,"ViewMoreOpen");
         Route::get('/viewmorependingverification' ,"viewmoreverification");
@@ -91,7 +92,7 @@ Route::middleware(['auth'])->group(function() {
         Route::post('/storeContract' ,"storeContract");
         Route::get('/viewmoreadminmaturedinvestment' ,"viewMoreAdminMaturedProject");
         Route::get('/contractDownload/{project_contract}' ,"downlaodContract");
-        Route::get('/maturedinvestment/{id}' ,"openMatured");
+        Route::get('/maturedproject/{id}' ,"openMatured");
         Route::get('/matureproject/{id}' ,"openMature");
         Route::post('/maturityDataSave' ,"maturityDataSave");
         Route::get('/adminongoingproject/{id}' ,"adminOngoing");

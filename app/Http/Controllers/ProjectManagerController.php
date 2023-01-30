@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\App;
 
 
 class ProjectManagerController extends Controller
@@ -39,7 +40,8 @@ class ProjectManagerController extends Controller
         ->where('new_projects.user_id',Auth::user()->id)
         ->join('new_projects','filed_investments.project_id','=','new_projects.id')
         ->join('users','filed_investments.user_id','=','users.id')
-        ->get();
+        ->join('statuses','filed_investments.status_id','=','statuses.id')
+        ->skip(0)->take(3)->get();
 
         $test = Auth::user()->id;
 
@@ -108,7 +110,12 @@ class ProjectManagerController extends Controller
     // matured investment
     function openMatured($id){
         $maturedData = NewProject::find($id);
-        return view('investment.maturedinvestment',compact('maturedData'));
+        return view('investment.maturedinvestment',
+        [
+            'maturedData'=>$maturedData,
+            'controller' => 'ProjectManagerController'
+        ]);
+
     }
 
     // Making the downlaod function
@@ -127,11 +134,11 @@ class ProjectManagerController extends Controller
 
     // view more verification queue
     function viewMoreVerification(){
-        $verify = FiledInvestment::where('filed_investments.status_id','1')
-        ->where('new_projects.user_id',Auth::user()->id)
-        ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+        $verify = FiledInvestment::join('new_projects','filed_investments.project_id','=','new_projects.id')
         ->join('users','filed_investments.user_id','=','users.id')
-        ->select('filed_investments.id','users.first_name','users.middle_name','users.last_name','filed_investments.amount_invested','filed_investments.deposit_upload')
+        ->join('statuses','filed_investments.status_id','=','statuses.id')
+        ->where('new_projects.user_id',Auth::user()->id)
+        ->select('filed_investments.id','users.first_name','users.middle_name','users.last_name','filed_investments.amount_invested','filed_investments.deposit_upload', 'statuses.status')
         ->get();
 
         return view('investment.viewmoreverificationqueue', compact('verify'));
@@ -139,12 +146,13 @@ class ProjectManagerController extends Controller
     }
 
 
+
     // specifc verification
     function specificVerify($id){
         $verify = FiledInvestment::where('filed_investments.id',$id)
         ->join('new_projects','filed_investments.project_id','=','new_projects.id')
         ->join('users','filed_investments.user_id','=','users.id')
-        ->select('filed_investments.id','new_projects.name','filed_investments.deposit_upload','filed_investments.date_of_deposit','filed_investments.amount_invested','filed_investments.created_at')
+        ->select('filed_investments.id','users.first_name','users.middle_name','users.last_name','new_projects.name','filed_investments.deposit_upload','filed_investments.date_of_deposit','filed_investments.amount_invested','filed_investments.created_at')
         ->first();
 
         return view('investment.investmentverification',compact('verify'));

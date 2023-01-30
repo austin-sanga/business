@@ -34,14 +34,34 @@
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>Invested</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($maturedData->budget) }}</span></div>
+        <div class="col  justify-content-end text-end">
+            <span>
+                @if (isset($controller) && $controller == 'InvestmentController')
+                        {{-- fill in investers investment --}}
+                        {{ $formatted_money($maturedData->quantity_sum) }}
+                    @elseif (isset($controller) && $controller == 'ProjectManagerController')
+                        {{-- fill in project investment --}}
+                        {{ $formatted_money($maturedData->budget) }}
+                @endif
+           </span>
+        </div>
         </div>
         <hr>
     </div>
     <div class="px-3">
         <div class="row ">
         <div class="col"><span>ROI</span></div>
-        <div class="col  justify-content-end text-end"><span>{{ $formatted_money($maturedData->roi )}}</span></div>
+        <div class="col  justify-content-end text-end">
+            <span>
+                @if (isset($controller) && $controller == 'InvestmentController')
+                    {{-- fill in investers investment --}}
+                    {{ $formatted_money(($maturedData->quantity_sum)/($maturedData->budget)*($maturedData->roi)) }}
+                    @elseif (isset($controller) && $controller == 'ProjectManagerController')
+                    {{-- fill in project investment --}}
+                    {{ $formatted_money($maturedData->roi )}}
+                @endif
+            </span>
+        </div>
         </div>
         <hr>
     </div>

@@ -8,6 +8,7 @@ use App\Models\FiledInvestment;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 
 class InvestmentController extends Controller
 {
@@ -19,6 +20,7 @@ class InvestmentController extends Controller
             $ongoing  = NewProject::where('status_id','2')->skip(0)->take(3)->get();
 
             // matured table
+
             /*
             Original code
 
@@ -30,7 +32,7 @@ class InvestmentController extends Controller
             ->skip(0)->take(3)->get(); */
 
             // chatgpt correction
-            $matured = FiledInvestment::select(\DB::raw("SUM(`amount_invested`) AS `quantity_sum`"), 'new_projects.name')
+            $matured = FiledInvestment::select(DB::raw("SUM(`amount_invested`) AS `quantity_sum`"), 'new_projects.name')
             ->join('new_projects','filed_investments.project_id','=','new_projects.id')
             ->where('filed_investments.user_id',Auth::user()->id)
             ->where('new_projects.status_id','3')
@@ -72,7 +74,7 @@ class InvestmentController extends Controller
 
         $sumSpecific = FiledInvestment::where('project_id',$id)
         ->where('new_projects.status_id','1')
-        ->select(\DB::raw("SUM(`amount_invested`) AS `quantity_sum`"))
+        ->select(DB::raw("SUM(`amount_invested`) AS `quantity_sum`"))
         ->join('new_projects','filed_investments.project_id','=','new_projects.id')
         ->first();
 
@@ -129,19 +131,56 @@ class InvestmentController extends Controller
     // view more matured investments
 
     function viewMoreMaturedProject(){
+            /*
+            original code
+
             $matured = FiledInvestment::groupBy('project_id')
             ->where('filed_investments.user_id',Auth::user()->id)
             ->where('new_projects.status_id','3')
-            ->select(\DB::raw("SUM(`amount_invested`) AS `amount_invested`"), 'name')
+            ->select(\DB::raw("SUM(`amount_invested`) AS `amount_invested`"), 'new_projects.name')
             ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+            ->get(); */
+
+            // chatgpt correction
+
+            // matatizo yanaanzia hapa kutokana na id ya user  inayopitishwa hapa chini
+            $matured = FiledInvestment::select(DB::raw("SUM(`amount_invested`) AS `quantity_sum`"), 'new_projects.name','new_projects.id')
+            ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+            ->where('filed_investments.user_id',Auth::user()->id)
+            ->where('new_projects.status_id','3')
+            ->groupBy('new_projects.name','new_projects.id')
             ->get();
 
-            dd($matured);
                 return view('investment.viewmorematuredinvestment', ['matured'=>$matured]);
 
-
-
      }
+
+    //  matured investment
+    function specificMatured($id){
+        # create a variable maturedData to hold data from the database table FiledInvestment joining the new_projects table calling sum of amount invested by the loged in user on the project id passed on the function
+        $maturedData = FiledInvestment::where('filed_investments.user_id',Auth::user()->id)
+        ->where('filed_investments.project_id',$id)
+        ->select(DB::raw("SUM(`amount_invested`) AS `quantity_sum`"), 'new_projects.name','new_projects.id','new_projects.start_date','new_projects.date_of_maturity','new_projects.budget','new_projects.roi','new_projects.project_contract','new_projects.manager_notice')
+        ->join('new_projects','filed_investments.project_id','=','new_projects.id')
+        ->groupBy('new_projects.name','new_projects.id','new_projects.start_date','new_projects.date_of_maturity','new_projects.budget','new_projects.roi','new_projects.project_contract','new_projects.manager_notice')
+        ->first();
+
+
+
+
+        /* $maturedData = NewProject::find($id) */;
+
+        // continue kwa kupull filed invetment za huyu user kwenye hii project, total yake uipass kwenda kwa view kama investment account
+        // follow up to improve hii ni kwa saving controller kuifanya kila filed investment iwe ina compile hesabu kwenye table mpya
+        // You should also make sure that you are passing the variable $controller from the controllers to the view.('controller' => 'InvestmentController')
+
+        return view(
+            'investment.maturedinvestment',
+            [
+                'maturedData'=>$maturedData,
+                'controller' => 'InvestmentController'
+            ]);
+    }
 
 
 
@@ -150,6 +189,7 @@ class InvestmentController extends Controller
         $list = NewProject::where('status_id','1')->get();
         return view('investment.invest',['list'=>$list]);
     }
+
 
     // save file invest
     function FileInvestment(Request $req){
@@ -195,3 +235,5 @@ class InvestmentController extends Controller
     // call for user specific filed invest with status 1 and user id of logged in
 
 }
+
+

@@ -23,7 +23,7 @@
     {{-- below is the recuression for the admin matured investment --}}
     <div class="px-3 ">
         @foreach ($matured as $matured)
-        <a href="publishedproject/{{ $matured->id }}">
+        <a href="maturedproject/{{ $matured->id }}">
         <div class="row ">
         <div class="col"><span>{{ $matured->name }}</span></div>
         <div class="col  justify-content-end text-end"><span>{{ $formatted_money($matured->budget) }}</span></div>
