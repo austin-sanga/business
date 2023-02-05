@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('project_id');
-            $table->string('amount_invested');
+            $table->bigInteger('amount_invested');
             $table->date('date_of_deposit');
             $table->string('deposit_upload');
             $table->string('status_id')->default(1);

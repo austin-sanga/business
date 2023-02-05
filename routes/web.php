@@ -23,9 +23,9 @@ Route::get('/', function () {
 /* routes administered operates in general form,
     origin story during all user access mode/member mode */
 
-Route::middleware(['auth'])->get('/dashboard' ,function(){
+/* Route::middleware(['auth'])->get('/dashboard' ,function(){
     return view('dashboard');
-});
+}); */
 
 
 Route::middleware(['auth'])->get('/loans' ,function(){
@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function() {
     // DashboardController
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/ministatement/{id}' ,"viewMiniStatement");
+        Route::get('/dashboard' ,"dashboardData");
     });
 
 
