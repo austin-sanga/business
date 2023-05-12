@@ -6,16 +6,20 @@
 
     {{-- first link towards the portfoliO amount --}}
 <div class="{{-- col-md-6  --}}{{-- col-xl-3 --}} mb-4 mx-5">
-    <div class="card shadow border-start-primary py-2" >
-        <div class="card-body">
-            <div class="row align-items-center no-gutters">
-                <div class="col me-2">
-                    <div class="text-uppercase text-black fw-bold text-xs mb-1"><span>Portfolio Amount</span></div>
-                    <div class="text-dark fw-bold h5 mb-0"><span>$40,000{{-- change as from database --}}</span></div>
-                </div>
-                <div class="col-auto">
-                    <div class="form-switch form-check ">
-                    <input class="form-check-input mx-2 pe-3" style="transform: scale(1.9);"   type="checkbox" role="switch" id="flexSwitchCheckDefault">
+
+
+        <div class="card shadow border-start-primary py-2" >
+            <div class="card-body">
+                <div class="row align-items-center no-gutters">
+                    <div class="col me-2">
+                        <div class="text-uppercase text-black fw-bold text-xs mb-1"><span>Portfolio Amount</span></div>
+                        <div class="text-dark fw-bold h5 mb-0" id="amount"><span id="amount-value">*****</span></div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="form-switch form-check ">
+                        <input class="form-check-input mx-2 pe-3" style="transform: scale(1.9);" type="checkbox" role="switch" id="flexSwitchCheckDefault" onclick="toggleAmountVisibility()">
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -87,5 +91,20 @@
 <a href="/logout" onclick="event.preventDefault();this.closest('form').submit();"> Logout </a>
 </form> --}}
 
+
+
+<script>
+    function toggleAmountVisibility() {
+      var amount = document.getElementById("amount");
+      var amountValue = document.getElementById("amount-value");
+      if (amountValue.innerHTML === "*****") {
+        amountValue.innerHTML = "{{$formatted_money($portfolio)}}";
+
+      } else if (amountValue.innerHTML === "{{$formatted_money($portfolio)}}") {
+
+        amountValue.innerHTML = "*****";
+      }
+    }
+</script>
 
 

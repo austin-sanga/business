@@ -148,4 +148,29 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------so i have implemented your code but am getting an error.
+SQLSTATE[42000]: Syntax error or access violation: 1055 'business.new_projects.id' isn't in GROUP BY
+
+This error message indicates that you're attempting to retrieve a non-aggregated column (new_projects.id) from a query that is using a GROUP BY clause. This is not allowed in SQL by default.
+
+You can resolve this error by either modifying the query to only select aggregated columns (i.e., columns that are being passed through an aggregate function such as SUM), or by modifying the SQL mode to allow non-aggregated columns to be selected in queries that use a GROUP BY clause.
+
+To modify the SQL mode, you can add the following line of code to your database configuration file (e.g., config/database.php in Laravel):
+
+    */
+
+    'mysql' => [
+
+        'modes'  => [
+
+            'ONLY_FULL_GROUP_BY',
+
+        ],
+
+    ],
+
+
+
+
 ];
