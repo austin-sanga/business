@@ -25,15 +25,13 @@
             </div>
         </div>
 
-        <ul class="dropdown-menu dropdown-menu-large" aria-labelledby="dropdownMenuButton1" style="width: 100%">
-            <div class="ms-2">
+            <ul class="dropdown-menu dropdown-menu-large" aria-labelledby="dropdownMenuButton1">
                 <li>Projects: {{-- money  --}}20,000,000</li>
                 <hr class="dropdown-divider">
                 <li>Savings: {{-- savings account --}}20,000,000</li>
                 <hr class="dropdown-divider">
                 <li class="text"><a href="withdraw" class="text-decoration-none"> <button class=" btn btn-success">Withdraw</button></a></li>
-            </div>
-        </ul>
+              </ul>
     </div>
     </div>
 

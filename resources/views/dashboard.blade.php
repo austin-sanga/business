@@ -6,6 +6,8 @@
 
     {{-- first link towards the portfoliO amount --}}
 <div class="{{-- col-md-6  --}}{{-- col-xl-3 --}} mb-4 mx-5">
+
+
         <div class="card shadow border-start-primary py-2" >
             <div class="card-body">
                 <div class="row align-items-center no-gutters">
@@ -17,11 +19,13 @@
                         <div class="form-switch form-check ">
                         <input class="form-check-input mx-2 pe-3" style="transform: scale(1.9);" type="checkbox" role="switch" id="flexSwitchCheckDefault" onclick="toggleAmountVisibility()">
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
 {{-- second link towards a ministatement --}}
@@ -89,7 +93,6 @@
 
 
 
-
 <script>
     function toggleAmountVisibility() {
       var amount = document.getElementById("amount");
@@ -103,4 +106,5 @@
       }
     }
 </script>
+
 
